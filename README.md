@@ -31,6 +31,7 @@ BLOG MERN APP
 - [使用方法](#使用方法)
 - [技術スタック](#技術スタック)
 - [ライセンス](#ライセンス)
+- [トラブルシューティング](#トラブルシューティング)
 
 ## 概要
 
@@ -204,6 +205,24 @@ BLOG MERN APP
 ## ライセンス
 MITライセンスで公開しています。詳細についてはLICENSEファイルをご覧ください。
 
+## トラブルシューティング
+
+### .env: no such file or directory
+
+.env ファイルがないので環境変数の一覧を参考に作成しましょう
+
+### docker daemon is not running
+
+Docker Desktop が起動できていないので起動させましょう
+
+### Ports are not available: address already in use
+
+別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります
+<br>
+下記記事を参考にしてください
+<br>
+[コンテナ起動時に Ports are not available: address already in use が出た時の対処法について](https://qiita.com/shun198/items/ab6eca4bbe4d065abb8f)
+
 
 ### 各セクションの説明
 
@@ -224,4 +243,7 @@ MITライセンスで公開しています。詳細についてはLICENSEファ�
 
 6. **ライセンス**:
    - プロジェクトのライセンス情報を記載します。例えば、MITライセンスであればその旨を記載し、ライセンスファイルがある場合はその場所を示します。
+
+7. **トラブルシューティング**:
+   - 
 
