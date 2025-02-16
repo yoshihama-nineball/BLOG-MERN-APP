@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: bug
+assignees: ''
+
+---
+
 <!-- 不具合のテンプレート -->
 # 概要
 不具合の簡単な説明を記載します。

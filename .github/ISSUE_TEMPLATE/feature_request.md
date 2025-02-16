@@ -1,3 +1,12 @@
+---
+name: Feature request
+about: Suggest an idea for this project
+title: ''
+labels: enhancement
+assignees: ''
+
+---
+
 <!-- あくまでテンプレートなので必ずしもすべての項目を埋めなくてよい -->
 
 プルリクを行う場合、以下の情な情報を含めるといい
