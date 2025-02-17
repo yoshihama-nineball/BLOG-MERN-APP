@@ -157,7 +157,7 @@ BLOG MERN APP
 3. Docker Composeを使ってすべてのサービスを起動します。
 
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
 
    サーバーが起動し、MongoDBが接続されるのを確認します。
