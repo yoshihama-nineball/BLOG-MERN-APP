@@ -2,16 +2,23 @@
 
 このプロジェクトでは以下の技術を使用しています。
 
-<!-- TODO: バージョンや技術選定をする -->
-![React](https://img.shields.io/badge/React-17.0.2-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-13.2.4-000000?style=flat-square&logo=next.js&logoColor=white)
+<!-- TODO: バックエンド側もインストールしたら反映する    -->
+
+![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-15.1.7-000000?style=flat-square&logo=next.js&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-16.x-339933?style=flat-square&logo=node.js&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4.4-47A248?style=flat-square&logo=mongodb&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-4.4-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-1.7.9-5A29E4?style=flat-square&logo=axios&logoColor=white)
+![React-Redux](https://img.shields.io/badge/React--Redux-9.2.0-764ABC?style=flat-square&logo=react-redux&logoColor=white)
+![React-Query](https://img.shields.io/badge/React--Query-5.66.3-FF4154?style=flat-square&logo=react-query&logoColor=white)
+![Formik](https://img.shields.io/badge/Formik-2.4.6-61DAFB?style=flat-square&logo=formik&logoColor=black)
+![Yup](https://img.shields.io/badge/Yup-1.6.1-007B66?style=flat-square&logo=yup&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0.6-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-9.20.1-4B32C3?style=flat-square&logo=eslint&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6.1.0-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-20.10-blue?style=flat-square&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2025-2088FF?style=flat-square&logo=github-actions&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-7.32.0-4B32C3?style=flat-square&logo=eslint&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-2.3.0-F7B93E?style=flat-square&logo=prettier&logoColor=black)
+
 
 
 # プロジェクト名
@@ -166,6 +173,26 @@ BLOG MERN APP
    サーバーはlocalhost:5000でアクセスできます。
    クライアントはlocalhost:3000で表示されます。
 
+5. 開発用コマンド
+
+以下のコマンドを使用して、コードの品質管理を行うことができます：
+
+```bash
+# コードのフォーマットとリントを同時に実行
+yarn fix
+```
+
+# 個別に実行する場合
+```bash
+# Prettierによるコードフォーマット
+yarn format
+```
+
+```bash
+# ESLintによるコード品質チェック
+yarn lint
+```
+
 ### 3. 環境変数の一覧
 
 <!-- TODO: 後で編集。テンプレ -->
@@ -190,17 +217,23 @@ BLOG MERN APP
 クライアント側では、ReactのコンポーネントからバックエンドAPIを呼び出してデータを表示します。
 
 ## 技術スタック
-<!-- TODO: テンプレ載せているだけなので、後でバージョン決定する -->
-| 言語・フレームワーク  | バージョン |
-| --------------------- | ---------- |
-| Python                | 3.11.4     |
-| Django                | 4.2.1      |
-| Django Rest Framework | 3.14.0     |
-| MySQL                 | 8.0        |
-| Node.js               | 16.17.0    |
-| React                 | 18.2.0     |
-| Next.js               | 13.4.6     |
-| Terraform             | 1.3.6      |
+<!-- TODO: バックエンド側もインストールしたら反映する    -->
+| 言語・フレームワーク      | バージョン       |
+| ------------------------- | ---------------- |
+| Node.js                   | 16.x             |
+| React                     | 19.0.0           |
+| Next.js                   | 15.1.7           |
+| Axios                     | 1.7.9            |
+| React-Redux               | 9.2.0            |
+| React-Query               | 5.66.3           |
+| Formik                    | 2.4.6            |
+| Yup                       | 1.6.1            |
+| TailwindCSS               | 4.0.6            |
+| TypeScript                | 5.0              |
+| ESLint                    | 9.20.1           |
+| Vite                      | 6.1.0            |
+| Docker                    | 20.10            |
+| GitHub Actions            | 2025             |
 
 ## ライセンス
 MITライセンスで公開しています。詳細についてはLICENSEファイルをご覧ください。
