@@ -5,3 +5,7 @@
 
 /backend/.env
 /frontend/.env
+
+/frontend/coverage
+/frontend/.next/
+/frontend/.swc
