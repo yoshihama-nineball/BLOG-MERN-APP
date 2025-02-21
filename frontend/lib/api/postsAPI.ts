@@ -1,9 +1,8 @@
 import axios from 'axios'
 
 const BASE_URL = 'http://localhost:5000/api/v1/posts'
-
 // 型定義
-interface PostData {
+http: interface PostData {
   postId?: string
   title: string
   description: string
