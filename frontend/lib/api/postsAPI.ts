@@ -19,29 +19,29 @@ export const createPostAPI = async (postData: PostData): Promise<any> => {
 }
 
 // //! Update post API
-// export const updatePostAPI = async (postData: PostData): Promise<any> => {
-//   console.log(postData)
-//   const response = await axios.put(`${BASE_URL}/${postData.postId}`, {
-//     title: postData.title,
-//     description: postData.description,
-//   })
-//   return response.data
-// }
+export const updatePostAPI = async (postData: PostData) => {
+  console.log(postData)
+  const response = await axios.put(`${BASE_URL}/${postData.postId}`, {
+    title: postData.title,
+    description: postData.description,
+  })
+  return response.data
+}
 
 // //! Fetch all posts
-// export const fetchAllPosts = async (): Promise<any> => {
-//   const response = await axios.get(BASE_URL)
-//   return response.data
-// }
+export const fetchAllPosts = async (): Promise<any> => {
+  const response = await axios.get(`${BASE_URL}`)
+  return response.data
+}
 
 // //! Fetch post
-// export const fetchPost = async (postId: string): Promise<any> => {
-//   const response = await axios.get(`${BASE_URL}/${postId}`)
-//   return response.data
-// }
+export const fetchPost = async (postId: string): Promise<any> => {
+  const response = await axios.get(`${BASE_URL}/${postId}`)
+  return response.data
+}
 
 // //! Delete post API
-// export const deletePostAPI = async (postId: string): Promise<any> => {
-//   const response = await axios.delete(`${BASE_URL}/${postId}`)
-//   return response.data
-// }
+export const deletePostAPI = async (postId: string): Promise<any> => {
+  const response = await axios.delete(`${BASE_URL}/${postId}`)
+  return response.data
+}
