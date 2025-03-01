@@ -1,13 +1,12 @@
 'use client'
 
 /** @jsxImportSource @emotion/react */
-import React from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import React from 'react'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import { Home as HomeIcon } from '@mui/icons-material'
-import { Button } from '@mui/material';
-import PostsList from './posts/page';
-
+import { Button } from '@mui/material'
+import PostsList from './posts/page'
 
 const buttonStyle = css`
   background-color: #0070f3;
@@ -22,11 +21,11 @@ const buttonStyle = css`
   &:hover {
     background-color: #005bb5;
   }
-`;
+`
 
 const StyledButton = styled.button`
   ${buttonStyle}
-`;
+`
 
 const ButtonComponent: React.FC = () => {
   return (
@@ -37,6 +36,6 @@ const ButtonComponent: React.FC = () => {
       <PostsList />
     </>
   )
-};
+}
 
-export default ButtonComponent;
+export default ButtonComponent

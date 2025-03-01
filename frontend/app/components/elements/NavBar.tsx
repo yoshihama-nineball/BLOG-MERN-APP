@@ -111,7 +111,7 @@ const PublicNavbar = () => {
           <Box
             sx={{
               display: 'flex',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             <IconButton

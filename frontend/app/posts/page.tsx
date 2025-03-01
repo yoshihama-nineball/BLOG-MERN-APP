@@ -42,8 +42,7 @@ const PostsList: React.FC = () => {
     }
   )
 
-
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams()
   const success = searchParams ? searchParams.get('success') : null
 
   const [open, setOpen] = useState(false)
@@ -82,10 +81,14 @@ const PostsList: React.FC = () => {
   return (
     <Box sx={{ padding: 2 }}>
       {isLoading && <CircularProgress />}
-      {success && <Alert severity="success" sx={{width: '20%'}} onClose={() => {}}>投稿が成功しました！</Alert>}
+      {success && (
+        <Alert severity="success" sx={{ width: '20%' }} onClose={() => {}}>
+          投稿が成功しました！
+        </Alert>
+      )}
       {/* {error && <Alert severity="error">エラーが発生しました</Alert>} */}
       {error && <Alert severity="error">{(error as Error).message}</Alert>}
-      
+
       {data?.getPosts.map((post: any) => (
         <Paper
           key={post._id}
