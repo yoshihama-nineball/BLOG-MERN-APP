@@ -7,9 +7,20 @@ import { fetchPost, updatePostAPI } from '../../../../lib/api/postsAPI'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import Link from 'next/link'
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  CircularProgress,
+  Alert,
+} from '@mui/material'
+import { css } from '@emotion/react'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
+// fetcher関数
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const postSchema = z.object({
@@ -19,11 +30,14 @@ const postSchema = z.object({
 
 type PostFormValues = z.infer<typeof postSchema>
 
+const buttonStyle = css`
+  margin-top: 16px;
+`
+
 const EditPost: React.FC = () => {
   const { postId } = useParams()
   const router = useRouter()
 
-  // データの取得
   const { data, error, isLoading } = useSWR(
     postId ? `${BASE_URL}/${postId}` : null,
     fetcher
@@ -58,41 +72,60 @@ const EditPost: React.FC = () => {
     }
     try {
       await updatePostAPI(postData)
-      mutate(`${BASE_URL}/${postId}`)
-      router.push(`/posts/${postId}`)
+      mutate(`${BASE_URL}/${postId}`) // キャッシュを無効化し再フェッチ
+      router.push(`/posts/${postId}?success=true`) // 更新後に記事の詳細画面にリダイレクト
     } catch (err) {
       console.error('Postの編集でエラーが起こりました:', err)
     }
   }
 
-  if (isLoading) return <p>Loading...</p>
-  if (error) return <p>{(error as Error).message}</p>
-
   return (
-    <div>
-      <h1>You are editing - {data?.getPost?.title}</h1>
+    <Box sx={{ padding: 2 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        記事の詳細ページ
+      </Typography>
+      {isLoading && <CircularProgress />}
+      {error && <Alert severity="error">{(error as Error).message}</Alert>}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="text"
-          placeholder="タイトルを記入してください"
-          defaultValue={data?.getPost?.title}
+        <TextField
+          fullWidth
+          placeholder={data?.getPost?.title ? '入力してね' : ''}
+          defaultValue={data?.getPost?.title || ''}
+          inputProps={{ inputMode: 'numeric' }}
           {...register('title')}
+          error={!!errors.title}
+          helperText={errors.title?.message}
+          margin="normal"
         />
-        {errors.title && (
-          <span style={{ color: 'red' }}>{errors.title?.message}</span>
-        )}
-        <input
-          type="text"
-          placeholder="詳細を記入してください"
-          defaultValue={data?.getPost?.description}
+        <TextField
+          fullWidth
+          placeholder={data?.getPost?.description ? '入力してね' : ''}
+          defaultValue={data?.getPost?.description || ''}
+          inputProps={{ inputMode: 'numeric' }}
           {...register('description')}
+          error={!!errors.description}
+          helperText={errors.description?.message}
+          margin="normal"
+          multiline
+          rows={4}
         />
-        {errors.description && (
-          <span style={{ color: 'red' }}>{errors.description?.message}</span>
-        )}
-        <button type="submit">更新</button>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          css={buttonStyle}
+        >
+          更新
+        </Button>
       </form>
-    </div>
+      <Box sx={{ marginTop: 2 }}>
+        <Link href={'/posts/'} passHref>
+          <Button variant="contained" color="secondary">
+            一覧に戻る
+          </Button>
+        </Link>
+      </Box>
+    </Box>
   )
 }
 
