@@ -54,9 +54,10 @@ a {
 }
 
 code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
   font-size: 1.1rem;
   font-family:
     Menlo,
@@ -67,4 +68,19 @@ code {
     Bitstream Vera Sans Mono,
     Courier New,
     monospace;
+}
+
+code {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+pre code {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
 }

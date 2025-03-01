@@ -1,71 +1,63 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
-import useSWR, { mutate } from 'swr'
-import { fetchPost, updatePostAPI } from '../../../lib/api/postsAPI'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
+import React from 'react'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
+import useSWR from 'swr'
+import { fetchPost } from '../../../lib/api/postsAPI'
 import Link from 'next/link'
+import { Box, Typography, Alert, Paper, Button } from '@mui/material'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import CodeBlock from '../../components/CodeBlock'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-// fetcher関数
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
-const postSchema = z.object({
-  title: z.string().min(1, 'タイトルを入力してください'),
-  description: z.string().min(1, '詳細を入力してください'),
-})
-
-type PostFormValues = z.infer<typeof postSchema>
-
-const EditPost: React.FC = () => {
+const PostDetail: React.FC = () => {
   const { postId } = useParams()
   const router = useRouter()
+
+  const searchParams = useSearchParams()
+  const success = searchParams ? searchParams.get('success') : null
 
   const { data, error, isLoading } = useSWR(
     postId ? `${BASE_URL}/${postId}` : null,
     fetcher
   )
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<PostFormValues>({
-    resolver: zodResolver(postSchema),
-    defaultValues: {
-      title: '',
-      description: '',
-    },
-  })
-
-  useEffect(() => {
-    if (data && data.getPost) {
-      reset({
-        title: data.getPost.title,
-        description: data.getPost.description,
-      })
-    }
-  }, [data, reset])
-
   return (
-    <div>
-      <h1>記事の詳細ページ</h1>
-      {isLoading && <p>Loading....</p>}
-      {error && <p>{(error as Error).message}</p>}
-      <div>
-        <h2>{data?.getPost?.title}</h2>
-        <p>{data?.getPost?.description}</p>
-        <Link href={'/posts/'}>
-          <button>一覧に戻る</button>
+    <Box sx={{ padding: 2 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        記事の詳細ページ
+      </Typography>
+      {isLoading && <Typography>Loading....</Typography>}
+      {success && (
+        <Alert severity="success" onClose={() => {}}>
+          投稿が成功しました！
+        </Alert>
+      )}
+      {error && <Alert severity="error">{(error as Error).message}</Alert>}
+      <Box>
+        <Typography variant="h5" component="h2" gutterBottom>
+          {data?.getPost?.title}
+        </Typography>
+        <Paper sx={{ padding: 2, backgroundColor: '#ffffff' }}>
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            components={{ code: CodeBlock }}
+          >
+            {data?.getPost?.description}
+          </ReactMarkdown>
+        </Paper>
+        <Link href="/posts/">
+          <Button variant="contained" color="primary" sx={{ marginTop: 2 }}>
+            一覧に戻る
+          </Button>
         </Link>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 
-export default EditPost
+export default PostDetail

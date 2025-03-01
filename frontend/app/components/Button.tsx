@@ -1,12 +1,7 @@
-'use client'
-
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Home as HomeIcon } from '@mui/icons-material'
-import { Button } from '@mui/material'
-import PostsList from './posts/page'
 
 const buttonStyle = css`
   background-color: #0070f3;
@@ -28,14 +23,7 @@ const StyledButton = styled.button`
 `
 
 const ButtonComponent: React.FC = () => {
-  return (
-    <>
-      <StyledButton>Click Me!</StyledButton>
-      <HomeIcon />
-      <Button>MUIのボタン</Button>
-      <PostsList />
-    </>
-  )
+  return <StyledButton>Click Me!</StyledButton>
 }
 
 export default ButtonComponent
