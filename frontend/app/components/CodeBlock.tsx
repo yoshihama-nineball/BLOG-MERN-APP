@@ -4,16 +4,20 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Box, Button } from '@mui/material'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 
+// 定義されているが使用されていない変数を削除
+// Unexpected any の解消
 interface CodeBlockProps {
-  node: any
-  inline: boolean
-  className: string
+  node: {
+    meta?: string
+  }
+  // inline?: boolean
+  className?: string
   children: React.ReactNode[]
 }
 
 const CodeBlock: React.FC<CodeBlockProps> = ({
   node,
-  inline,
+  // inline,
   className,
   children,
   ...props

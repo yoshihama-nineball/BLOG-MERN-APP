@@ -1,9 +1,10 @@
 'use client'
-import React from 'react'
+import React, { Suspense } from 'react'
 import NavBar from './components/elements/NavBar'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from '../styles/theme'
+import Loading from './components/elements/Loading'
 
 export default function RootLayout({
   children,
@@ -16,7 +17,7 @@ export default function RootLayout({
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <NavBar />
-          {children}
+          <Suspense fallback={<Loading />}>{children}</Suspense>
         </ThemeProvider>
       </body>
     </html>

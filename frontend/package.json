@@ -1,17 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3000",
     "test": "jest",
     "test:ci": "jest --ci",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "next:cache": "next cache clean"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@hookform/resolvers": "^4.1.0",
+    "@hookform/resolvers": "^4.1.2",
     "@mui/icons-material": "^6.4.5",
     "@mui/material": "^6.4.5",
     "@reduxjs/toolkit": "^2.5.1",
@@ -37,7 +38,11 @@
     "@testing-library/react": "^16.2.0",
     "@types/jest": "29.5.11",
     "@types/react": "^19.0.10",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
     "eslint": "^9.20.1",
+    "eslint-config-next": "^15.2.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",

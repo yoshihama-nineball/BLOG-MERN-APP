@@ -1,15 +1,15 @@
 'use client'
 
-import React from 'react'
-import { useRouter } from 'next/navigation'
-import { useForm, SubmitHandler } from 'react-hook-form'
+// import { css } from '@emotion/react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { createPostAPI } from '../../../lib/api/postsAPI'
-import { Box, Button, TextField, Typography, Paper } from '@mui/material'
-import { css } from '@emotion/react'
+import { Box, Button, Paper, TextField, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation'
+import React from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import ReactMarkdown from 'react-markdown'
 import rehypeHighlight from 'rehype-highlight'
+import { z } from 'zod'
+import { createPostAPI } from '../../../lib/api/postsAPI'
 
 const postSchema = z.object({
   title: z.string().min(1, 'タイトルを入力してください'),
@@ -18,9 +18,9 @@ const postSchema = z.object({
 
 type PostFormValues = z.infer<typeof postSchema>
 
-const buttonStyle = css`
-  margin-top: 16px;
-`
+// const buttonStyle = css`
+//   margin-top: 16px;
+// `
 
 const CreatePost: React.FC = () => {
   const router = useRouter()
@@ -94,7 +94,7 @@ const CreatePost: React.FC = () => {
             type="submit"
             variant="contained"
             color="primary"
-            css={buttonStyle}
+            // css={buttonStyle}
           >
             投稿
           </Button>
