@@ -1,8 +1,12 @@
 module.exports = {
-  extends: ['next/core-web-vitals'],
+  extends: [
+    'next/core-web-vitals',
+    'prettier', // この行を追加
+  ],
+  plugins: ['prettier'], // この行を追加
   rules: {
     'prettier/prettier': [
-      'warn', // errorからwarnに変更
+      'error',
       {
         semi: false,
         singleQuote: true,
