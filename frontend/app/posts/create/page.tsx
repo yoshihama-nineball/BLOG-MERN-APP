@@ -1,7 +1,13 @@
 'use client'
 
+// import { css } from '@emotion/react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Box, Button, Paper, TextField, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation'
+import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import ReactMarkdown from 'react-markdown'
+import rehypeHighlight from 'rehype-highlight'
 import { z } from 'zod'
 import { createPostAPI } from '../../../lib/api/postsAPI'
 
@@ -12,57 +18,100 @@ const postSchema = z.object({
 
 type PostFormValues = z.infer<typeof postSchema>
 
-export default function CreatePost() {
+// const buttonStyle = css`
+//   margin-top: 16px;
+// `
+
+const CreatePost: React.FC = () => {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<PostFormValues>({
     resolver: zodResolver(postSchema),
   })
 
+  const description = watch('description')
+
   const onSubmit: SubmitHandler<PostFormValues> = async (data) => {
     try {
-      const newPostData = {
-        postId: crypto.randomUUID(), // より安全なユニークID生成
-        ...data,
-      }
-      const response = await createPostAPI(newPostData)
+      const response = await createPostAPI(data)
       console.log('Postが作成されました:', response)
+      router.push('/posts?success=true')
     } catch (error) {
       console.error('Postの作成でエラーが起こりました:', error)
     }
   }
 
   return (
-    <div>
+    <Box sx={{ padding: 2 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        新しい投稿を作成
+      </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="title">タイトル</label>
-          <input
-            id="title"
-            type="text"
-            placeholder="タイトルを記入してください"
-            {...register('title')}
-          />
-          {errors.title && (
-            <span style={{ color: 'red' }}>{errors.title.message}</span>
-          )}
-        </div>
-        <div>
-          <label htmlFor="description">詳細</label>
-          <input
-            id="description"
-            type="text"
-            placeholder="詳細を記入してください"
+        <TextField
+          fullWidth
+          label="タイトル"
+          placeholder="タイトルを記入してください"
+          {...register('title')}
+          error={!!errors.title}
+          helperText={errors.title?.message}
+          margin="normal"
+          variant="outlined"
+          sx={{
+            fieldset: {
+              border: 'none',
+            },
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <Paper sx={{ padding: 2, backgroundColor: '#ffffff' }}>
+          <TextField
+            fullWidth
+            label="本文"
+            placeholder="本文をマークダウン形式で記入してください"
             {...register('description')}
+            error={!!errors.description}
+            helperText={errors.description?.message}
+            margin="normal"
+            multiline
+            rows={10}
+            variant="outlined"
+            sx={{
+              fieldset: {
+                border: 'none',
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-          {errors.description && (
-            <span style={{ color: 'red' }}>{errors.description.message}</span>
-          )}
-        </div>
-        <button type="submit">投稿</button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            // css={buttonStyle}
+          >
+            投稿
+          </Button>
+        </Paper>
       </form>
-    </div>
+      <Box sx={{ paddingTop: 4 }}>
+        <Typography variant="h5" component="h2">
+          プレビュー
+        </Typography>
+        <Paper sx={{ padding: 2, backgroundColor: '#ffffff' }}>
+          <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+            {description}
+          </ReactMarkdown>
+        </Paper>
+      </Box>
+    </Box>
   )
 }
+
+export default CreatePost

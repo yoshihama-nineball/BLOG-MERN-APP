@@ -88,7 +88,6 @@ const PostsList: React.FC = () => {
   return (
     <Box sx={{ padding: 2 }}>
       {isLoading && <CircularProgress />}
-      <h2>updatedd</h2>
       {success && (
         <Alert severity="success" sx={{ width: '20%' }} onClose={() => {}}>
           投稿が成功しました！
