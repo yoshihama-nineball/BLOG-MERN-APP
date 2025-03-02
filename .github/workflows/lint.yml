@@ -22,18 +22,26 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
+        cache: 'yarn'
+        cache-dependency-path: |
+          frontend/yarn.lock
+          backend/yarn.lock
     
-    - name: Install Root Dependencies
-      run: npm install
+    - name: Install Frontend Dependencies
+      working-directory: ./frontend
+      run: yarn install
+    
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: yarn install
     
     - name: Lint Frontend
       working-directory: ./frontend
-      run: npm run lint
+      run: yarn lint
     
     - name: Lint Backend
       working-directory: ./backend
-      run: npm run lint
+      run: yarn lint
     
     - name: Check Code Formatting
       run: npx prettier --check .
