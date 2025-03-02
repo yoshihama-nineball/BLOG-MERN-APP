@@ -3,8 +3,9 @@
 import React, { useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import useSWR, { mutate } from 'swr'
-import { fetchPost, updatePostAPI } from '../../../../lib/api/postsAPI'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { updatePostAPI } from '../../../../lib/api/postsAPI'
+import * as reactHookForm from 'react-hook-form'
+import { SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import Link from 'next/link'
@@ -16,7 +17,7 @@ import {
   CircularProgress,
   Alert,
 } from '@mui/material'
-import { css } from '@emotion/react'
+// import { css } from '@emotion/react'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -30,13 +31,19 @@ const postSchema = z.object({
 
 type PostFormValues = z.infer<typeof postSchema>
 
-const buttonStyle = css`
-  margin-top: 16px;
-`
+// const buttonStyle = css`
+//   margin-top: 16px;
+// `
+
+// interface Params {
+//   postId: string
+// }
 
 const EditPost: React.FC = () => {
-  const { postId } = useParams()
+  const params = useParams()
+  const postId = typeof params?.postId === 'string' ? params.postId : ''
   const router = useRouter()
+  const { useForm } = reactHookForm
 
   const { data, error, isLoading } = useSWR(
     postId ? `${BASE_URL}/${postId}` : null,
@@ -71,7 +78,7 @@ const EditPost: React.FC = () => {
       postId,
     }
     try {
-      await updatePostAPI(postData)
+      await updatePostAPI(postId, postData)
       mutate(`${BASE_URL}/${postId}`) // キャッシュを無効化し再フェッチ
       router.push(`/posts/${postId}?success=true`) // 更新後に記事の詳細画面にリダイレクト
     } catch (err) {
@@ -113,7 +120,7 @@ const EditPost: React.FC = () => {
           type="submit"
           variant="contained"
           color="primary"
-          css={buttonStyle}
+          // css={buttonStyle}
         >
           更新
         </Button>

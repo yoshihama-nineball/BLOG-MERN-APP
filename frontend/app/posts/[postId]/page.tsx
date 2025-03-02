@@ -1,22 +1,26 @@
 'use client'
 
+import { useParams, useSearchParams } from 'next/navigation'
 import React from 'react'
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import useSWR from 'swr'
-import { fetchPost } from '../../../lib/api/postsAPI'
+// import { fetchPost } from '../../../lib/api/postsAPI'
+import { Alert, Box, Button, Paper, Typography } from '@mui/material'
 import Link from 'next/link'
-import { Box, Typography, Alert, Paper, Button } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import CodeBlock from '../../components/CodeBlock'
+import Loading from '../../components/elements/Loading'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
+// interface Params {
+//   postId: string
+// }
 const PostDetail: React.FC = () => {
-  const { postId } = useParams()
-  const router = useRouter()
+  const params = useParams()
+  const postId = typeof params?.postId === 'string' ? params.postId : ''
 
   const searchParams = useSearchParams()
   const success = searchParams ? searchParams.get('success') : null
@@ -31,7 +35,7 @@ const PostDetail: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         記事の詳細ページ
       </Typography>
-      {isLoading && <Typography>Loading....</Typography>}
+      {isLoading && <Loading />}
       {success && (
         <Alert severity="success" onClose={() => {}}>
           投稿が成功しました！
@@ -45,7 +49,7 @@ const PostDetail: React.FC = () => {
         <Paper sx={{ padding: 2, backgroundColor: '#ffffff' }}>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
-            components={{ code: CodeBlock }}
+            components={{ code: CodeBlock as React.ComponentType<any> }}
           >
             {data?.getPost?.description}
           </ReactMarkdown>
