@@ -7,7 +7,8 @@
     "test": "jest",
     "test:ci": "jest --ci",
     "format": "prettier --write .",
-    "next:cache": "next cache clean"
+    "next:cache": "next cache clean",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
