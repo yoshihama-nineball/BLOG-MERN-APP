@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "daily"  # weeklyから dailyに変更
+    pull-request-branch-name:
+      separator: "-"
+    commit-message:
+      prefix: "deps:"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "npm"
+    directory: "/backend"
+    schedule:
+      interval: "daily"  # weeklyから dailyに変更
+    pull-request-branch-name:
+      separator: "-"
+    commit-message:
+      prefix: "deps:"
+    open-pull-requests-limit: 10
