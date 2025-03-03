@@ -1,20 +1,12 @@
-// server.ts ファイルを修正
-import express from 'express'
-import path from 'path'
-// 他のインポート...
+import colors from 'colors'
+import dotenv from 'dotenv'
+import 'reflect-metadata'
+import server from './server'
 
-const app = express()
-// 既存のミドルウェアとAPIルート...
+dotenv.config()
 
-// APIルートの後に追加
-if (process.env.NODE_ENV === 'production') {
-  // フロントエンドのビルドフォルダへのパス
-  app.use(express.static(path.join(__dirname, '../../client/build')))
+const port = process.env.PORT || 5000
 
-  // 他のすべてのリクエストをindex.htmlにリダイレクト
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'))
-  })
-}
-
-export default app
+server.listen(port, () => {
+  console.log(colors.cyan.bold(`APIのポート番号は ${port}です`))
+})
