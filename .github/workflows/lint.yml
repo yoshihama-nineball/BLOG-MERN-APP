@@ -6,6 +6,7 @@ on:
       - 'feature/**'
       - develop
       - main
+      - 'chrome/**'
   pull_request:
     branches:
       - main
