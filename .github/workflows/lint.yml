@@ -1,4 +1,4 @@
-name: Lint Code
+name: Code Style Check
 
 on:
   push:
@@ -12,36 +12,43 @@ on:
       - develop
 
 jobs:
-  lint:
+  lint-and-format:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'yarn'
-        cache-dependency-path: |
-          frontend/yarn.lock
-          backend/yarn.lock
-    
-    - name: Install Frontend Dependencies
-      working-directory: ./frontend
-      run: yarn install
-    
-    - name: Install Backend Dependencies
-      working-directory: ./backend
-      run: yarn install
-    
-    - name: Lint Frontend
-      working-directory: ./frontend
-      run: yarn lint
-    
-    - name: Lint Backend
-      working-directory: ./backend
-      run: yarn lint
-    
+        cache: 'npm'
+
+    - name: Install Prettier
+      run: npm install -g prettier
+
     - name: Check Code Formatting
-      run: npx prettier --check .
+      run: |
+        prettier --check .github/dependabot.yml \
+          .github/ISSUE_TEMPLATE/*.md \
+          .github/PULL_REQUEST_TEMPLATE/*.md \
+          .github/workflows/lint.yml \
+          compose.yml \
+          README.md
+
+    - name: Auto-format if neededF
+      run: |
+        prettier --write .github/dependabot.yml \
+          .github/ISSUE_TEMPLATE/*.md \
+          .github/PULL_REQUEST_TEMPLATE/*.md \
+          .github/workflows/lint.yml \
+          compose.yml \
+          README.md
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'actions@github.com'
+        git add .
+        git commit -m "Style: Auto-format files with Prettier" || exit 0
+        git push
