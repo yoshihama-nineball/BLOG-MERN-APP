@@ -1,4 +1,4 @@
-name: Code Style Check
+name: Lint and Format
 
 on:
   push:
@@ -14,41 +14,39 @@ on:
 jobs:
   lint-and-format:
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v4
-
+    
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
-
-    - name: Install Prettier
-      run: npm install -g prettier
-
-    - name: Check Code Formatting
-      run: |
-        prettier --check .github/dependabot.yml \
-          .github/ISSUE_TEMPLATE/*.md \
-          .github/PULL_REQUEST_TEMPLATE/*.md \
-          .github/workflows/lint.yml \
-          compose.yml \
-          README.md
-
-    - name: Auto-format if neededF
-      run: |
-        prettier --write .github/dependabot.yml \
-          .github/ISSUE_TEMPLATE/*.md \
-          .github/PULL_REQUEST_TEMPLATE/*.md \
-          .github/workflows/lint.yml \
-          compose.yml \
-          README.md
-
-    - name: Commit changes
-      run: |
-        git config --global user.name 'GitHub Actions'
-        git config --global user.email 'actions@github.com'
-        git add .
-        git commit -m "Style: Auto-format files with Prettier" || exit 0
-        git push
+        cache: 'yarn'
+        cache-dependency-path: |
+          backend/yarn.lock
+          frontend/yarn.lock
+    
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: yarn install
+    
+    - name: Install Frontend Dependencies
+      working-directory: ./frontend
+      run: yarn install
+    
+    - name: Lint Backend
+      working-directory: ./backend
+      run: yarn lint
+    
+    - name: Lint Frontend
+      working-directory: ./frontend
+      run: yarn lint
+    
+    - name: Check Backend Code Formatting
+      working-directory: ./backend
+      run: yarn format:check
+    
+    - name: Check Frontend Code Formatting
+      working-directory: ./frontend
+      run: yarn format:check
