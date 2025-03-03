@@ -1,11 +1,10 @@
-import express from 'express'
-import { Request, Response } from 'express'
 import 'dotenv/config'
-import colors from 'colors'
-import morgan from 'morgan'
-import { connectDB } from './config/db'
-import Post from '../models/Post/Post'
+import express, { Request, Response } from 'express'
+// import colors from 'colors'
 import cors from 'cors'
+import morgan from 'morgan'
+import Post from '../models/Post/Post'
+import { connectDB } from './config/db'
 
 const app = express()
 
