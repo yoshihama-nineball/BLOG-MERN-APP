@@ -5,6 +5,10 @@ on:
     branches:
       - main
       - develop
+  pull_request:
+    branches:
+      - main
+      - develop
   
 jobs:
   build-and-test:
@@ -19,20 +23,25 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
+          cache-dependency-path: |
+            backend/yarn.lock
+            frontend/yarn.lock
   
       - name: Install Backend Dependencies
         working-directory: ./backend
         run: yarn install
-        env:
-          MONGO_URL: ${{ secrets.MONGO_URL }}
-          PORT: ${{ secrets.PORT }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
   
       - name: Install Frontend Dependencies
         working-directory: ./frontend
         run: yarn install
-        env:
-          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+  
+      - name: Backend Lint
+        working-directory: ./backend
+        run: yarn lint
+  
+      - name: Frontend Lint
+        working-directory: ./frontend
+        run: yarn lint
   
       - name: Backend Tests
         working-directory: ./backend
