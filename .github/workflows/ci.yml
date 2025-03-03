@@ -35,3 +35,6 @@ jobs:
     - name: Run tests (Backend)
       working-directory: ./backend
       run: yarn test
+    - name: Run coverage (Backend)
+      working-directory: ./backend
+      run: yarn coverage

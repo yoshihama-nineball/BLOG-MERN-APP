@@ -12,7 +12,8 @@
     "test": "jest --coverage",
     "lint": "eslint 'src/**/*.ts' --max-warnings 10",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "axios": "^1.7.9",
