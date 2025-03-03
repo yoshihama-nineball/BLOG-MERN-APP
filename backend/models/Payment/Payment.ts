@@ -1,19 +1,19 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from 'mongoose'
 
 interface IPayment extends Document {
-  user: mongoose.Types.ObjectId;
-  reference: string;
-  currency: string;
-  status: string;
-  subscriptionPlan: mongoose.Types.ObjectId;
-  amount: number;
+  user: mongoose.Types.ObjectId
+  reference: string
+  currency: string
+  status: string
+  subscriptionPlan: mongoose.Types.ObjectId
+  amount: number
 }
 
 const paymentSchema: Schema<IPayment> = new Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
     },
     reference: {
       type: String,
@@ -25,12 +25,12 @@ const paymentSchema: Schema<IPayment> = new Schema(
     },
     status: {
       type: String,
-      default: "pending",
+      default: 'pending',
       required: true,
     },
     subscriptionPlan: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Plan",
+      ref: 'Plan',
       required: true,
     },
     amount: {
@@ -41,8 +41,8 @@ const paymentSchema: Schema<IPayment> = new Schema(
   {
     timestamps: true,
   }
-);
+)
 
-const Payment = mongoose.model<IPayment>("Payment", paymentSchema);
+const Payment = mongoose.model<IPayment>('Payment', paymentSchema)
 
-export default Payment;
+export default Payment

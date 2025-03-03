@@ -1,10 +1,10 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from 'mongoose'
 
 interface IPlan extends Document {
-  planName: string;
-  features: string[];
-  limitations: string[];
-  price: number;
+  planName: string
+  features: string[]
+  limitations: string[]
+  price: number
 }
 
 const planSchema: Schema<IPlan> = new Schema(
@@ -17,8 +17,8 @@ const planSchema: Schema<IPlan> = new Schema(
   {
     timestamps: true,
   }
-);
+)
 
-const Plan = mongoose.model<IPlan>("Plan", planSchema);
+const Plan = mongoose.model<IPlan>('Plan', planSchema)
 
-export default Plan;
+export default Plan

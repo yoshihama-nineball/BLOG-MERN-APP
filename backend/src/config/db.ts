@@ -1,17 +1,15 @@
-import mongoose from 'mongoose';
-import colors from 'colors';
+import mongoose from 'mongoose'
+import colors from 'colors'
 
 export const connectDB = async () => {
-  try{
+  try {
     const url = process.env.MONGO_URL
     const connecton = await mongoose.connect(url)
 
-    console.log(connecton);
-    
-    console.log(colors.blue.bold(`mongoDBは接続しました`));
-    
+    console.log(connecton)
+
+    console.log(colors.blue.bold(`mongoDBは接続しました`))
   } catch (error) {
-    console.log(error.message);
-    
+    console.log(error.message)
   }
 }

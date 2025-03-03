@@ -1,20 +1,20 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from 'mongoose'
 
 interface IPost extends Document {
-  title: string;
-  description: string;
-  image: object;
-  author: mongoose.Types.ObjectId;
-  nextEarningDate: Date;
-  thisMonthEarnings: number;
-  totalEarnings: number;
-  category: mongoose.Types.ObjectId;
-  viewsCount: number;
-  likes: mongoose.Types.ObjectId[];
-  dislikes: mongoose.Types.ObjectId[];
-  viewers: mongoose.Types.ObjectId[];
-  comments: mongoose.Types.ObjectId[];
-  isBlocked: boolean;
+  title: string
+  description: string
+  image: object
+  author: mongoose.Types.ObjectId
+  nextEarningDate: Date
+  thisMonthEarnings: number
+  totalEarnings: number
+  category: mongoose.Types.ObjectId
+  viewsCount: number
+  likes: mongoose.Types.ObjectId[]
+  dislikes: mongoose.Types.ObjectId[]
+  viewers: mongoose.Types.ObjectId[]
+  comments: mongoose.Types.ObjectId[]
+  isBlocked: boolean
 }
 
 const postSchema: Schema<IPost> = new Schema(
@@ -26,7 +26,7 @@ const postSchema: Schema<IPost> = new Schema(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       // required: true,
     },
     nextEarningDate: {
@@ -36,17 +36,17 @@ const postSchema: Schema<IPost> = new Schema(
     },
     thisMonthEarnings: { type: Number, default: 0 },
     totalEarnings: { type: Number, default: 0 },
-    category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
+    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
     viewsCount: { type: Number, default: 0 },
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    dislikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    viewers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    dislikes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    viewers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     isBlocked: { type: Boolean, default: false },
   },
   { timestamps: true }
-);
+)
 
-const Post = mongoose.model<IPost>("Post", postSchema);
+const Post = mongoose.model<IPost>('Post', postSchema)
 
-export default Post;
+export default Post

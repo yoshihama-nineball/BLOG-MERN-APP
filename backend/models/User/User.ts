@@ -1,26 +1,26 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from 'mongoose'
 
 interface IUser extends Document {
-  username: string;
-  profilePicture: object | null;
-  email: string | null;
-  password: string | null;
-  googleId: string | null;
-  authMethod: "google" | "local" | "facebook" | "github";
-  passwordResetToken: string | null;
-  accountVerificationToken: string | null;
-  accountVerificationExpires: Date | null;
-  passwordResetExpires: Date | null;
-  posts: mongoose.Types.ObjectId[];
-  totalEarnings: number;
-  nextEarningDate: Date;
-  Plan: mongoose.Types.ObjectId | null;
-  isEmailVerified: boolean;
-  payments: mongoose.Types.ObjectId[];
-  hasSelectedPlan: boolean;
-  lastLogin: Date;
-  followers: mongoose.Types.ObjectId[];
-  following: mongoose.Types.ObjectId[];
+  username: string
+  profilePicture: object | null
+  email: string | null
+  password: string | null
+  googleId: string | null
+  authMethod: 'google' | 'local' | 'facebook' | 'github'
+  passwordResetToken: string | null
+  accountVerificationToken: string | null
+  accountVerificationExpires: Date | null
+  passwordResetExpires: Date | null
+  posts: mongoose.Types.ObjectId[]
+  totalEarnings: number
+  nextEarningDate: Date
+  Plan: mongoose.Types.ObjectId | null
+  isEmailVerified: boolean
+  payments: mongoose.Types.ObjectId[]
+  hasSelectedPlan: boolean
+  lastLogin: Date
+  followers: mongoose.Types.ObjectId[]
+  following: mongoose.Types.ObjectId[]
 }
 
 const userSchema: Schema<IUser> = new Schema(
@@ -47,9 +47,9 @@ const userSchema: Schema<IUser> = new Schema(
     },
     authMethod: {
       type: String,
-      enum: ["google", "local", "facebook", "github"],
+      enum: ['google', 'local', 'facebook', 'github'],
       required: true,
-      default: "local",
+      default: 'local',
     },
     passwordResetToken: {
       type: String,
@@ -67,7 +67,7 @@ const userSchema: Schema<IUser> = new Schema(
       type: Date,
       default: null,
     },
-    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
     totalEarnings: { type: Number, default: 0 },
     nextEarningDate: {
       type: Date,
@@ -76,21 +76,21 @@ const userSchema: Schema<IUser> = new Schema(
     },
     Plan: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Plan",
+      ref: 'Plan',
     },
     isEmailVerified: {
       type: Boolean,
       default: false,
     },
-    payments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Payment" }],
+    payments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Payment' }],
     hasSelectedPlan: { type: Boolean, default: false },
     lastLogin: { type: Date, default: Date.now },
-    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   },
   { timestamps: true }
-);
+)
 
-const User = mongoose.model<IUser>("User", userSchema);
+const User = mongoose.model<IUser>('User', userSchema)
 
-export default User;
+export default User

@@ -1,10 +1,10 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from 'mongoose'
 
 // Interface for the Comment document
 interface IComment extends Document {
-  content: string;
-  author: mongoose.Types.ObjectId;
-  post: mongoose.Types.ObjectId;
+  content: string
+  author: mongoose.Types.ObjectId
+  post: mongoose.Types.ObjectId
 }
 
 // Schema definition
@@ -16,19 +16,19 @@ const commentSchema: Schema<IComment> = new Schema(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     post: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Post",
+      ref: 'Post',
       required: true,
     },
   },
   { timestamps: true }
-);
+)
 
 // Model creation
-const Comment = mongoose.model<IComment>("Comment", commentSchema);
+const Comment = mongoose.model<IComment>('Comment', commentSchema)
 
-export default Comment;
+export default Comment

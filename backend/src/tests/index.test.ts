@@ -1,5 +1,5 @@
 describe('test', () => {
-  it('test case', () =>{
+  it('test case', () => {
     console.log('テスト！')
   })
 })
