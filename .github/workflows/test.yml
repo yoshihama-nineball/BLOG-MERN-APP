@@ -1,0 +1,63 @@
+name: Test
+  
+on:
+  push:
+    branches:
+      - main
+      - develop
+  
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+  
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+  
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: yarn install
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+  
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: yarn install
+        env:
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+  
+      - name: Backend Tests
+        working-directory: ./backend
+        run: yarn test
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+  
+      - name: Frontend Tests
+        working-directory: ./frontend
+        run: yarn test
+        env:
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+  
+      - name: Backend Coverage
+        working-directory: ./backend
+        run: yarn coverage
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+  
+      - name: Upload Backend Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage-report
+          path: backend/coverage
