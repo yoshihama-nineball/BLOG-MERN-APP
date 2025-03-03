@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+        cache-dependency-path: |
+          frontend/yarn.lock
+          backend/yarn.lock
+    - name: Install dependencies (Frontend)
+      working-directory: ./frontend
+      run: yarn install
+    - name: Install dependencies (Backend)
+      working-directory: ./backend
+      run: yarn install
+    - name: Run tests (Frontend)
+      working-directory: ./frontend
+      run: yarn test
+    - name: Run tests (Backend)
+      working-directory: ./backend
+      run: yarn test
