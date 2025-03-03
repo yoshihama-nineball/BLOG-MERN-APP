@@ -1,12 +1,20 @@
-import 'reflect-metadata'
-import colors from 'colors'
-import server from './server'
-import dotenv from 'dotenv'
+// server.ts ファイルを修正
+import express from 'express'
+import path from 'path'
+// 他のインポート...
 
-dotenv.config()
+const app = express()
+// 既存のミドルウェアとAPIルート...
 
-const port = process.env.PORT || 5000
+// APIルートの後に追加
+if (process.env.NODE_ENV === 'production') {
+  // フロントエンドのビルドフォルダへのパス
+  app.use(express.static(path.join(__dirname, '../../client/build')))
 
-server.listen(port, () => {
-  console.log(colors.cyan.bold(`APIのポート番号は ${port}です`))
-})
+  // 他のすべてのリクエストをindex.htmlにリダイレクト
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../client/build', 'index.html'))
+  })
+}
+
+export default app
