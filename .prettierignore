@@ -3,3 +3,7 @@
 .github/PULL_REQUEST_TEMPLATE/*.md
 dist/
 dist/**/*
+**/dist/
+**/dist/**/*
+**/node_modules/
+**/node_modules/**/*
