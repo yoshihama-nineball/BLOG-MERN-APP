@@ -8,7 +8,8 @@
     "test:ci": "jest --ci",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "next:cache": "next cache clean"
+    "next:cache": "next cache clean",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
