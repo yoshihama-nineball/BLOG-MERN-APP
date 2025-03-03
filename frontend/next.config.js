@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   // ホットリロードを確実にするための設定
   webpack: (config, { dev }) => {
     if (dev) {
