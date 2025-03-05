@@ -1,136 +1,89 @@
-# 仕様技術一覧
+# BLOG MERN APP
 
-このプロジェクトでは以下の技術を使用しています。
+ブログ投稿と認証機能を持つMERNスタック（MongoDB, Express, React, Node.js）で構築されたウェブアプリケーションです。
 
-<!-- TODO: バックエンド側もインストールしたら反映する    -->
-
-![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-15.1.7-000000?style=flat-square&logo=next.js&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-16.x-339933?style=flat-square&logo=node.js&logoColor=white)
-![Axios](https://img.shields.io/badge/Axios-1.7.9-5A29E4?style=flat-square&logo=axios&logoColor=white)
-![React-Redux](https://img.shields.io/badge/React--Redux-9.2.0-764ABC?style=flat-square&logo=react-redux&logoColor=white)
-![React-Query](https://img.shields.io/badge/React--Query-5.66.3-FF4154?style=flat-square&logo=react-query&logoColor=white)
-![Formik](https://img.shields.io/badge/Formik-2.4.6-61DAFB?style=flat-square&logo=formik&logoColor=black)
-![Yup](https://img.shields.io/badge/Yup-1.6.1-007B66?style=flat-square&logo=yup&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0.6-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-007ACC?style=flat-square&logo=typescript&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-9.20.1-4B32C3?style=flat-square&logo=eslint&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-6.1.0-646CFF?style=flat-square&logo=vite&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-20.10-blue?style=flat-square&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2025-2088FF?style=flat-square&logo=github-actions&logoColor=white)
-
-
-
-# プロジェクト名
-## アプリ名
-BLOG MERN APP
 ## 機能
+
 1. ブログ投稿機能
 2. 認証機能
-　　Google認証を用いたログインが可能です(jwt認証適宜追加)
-3. 
+   - Google認証を用いたログインが可能です（JWT認証適宜追加）
 
+## デプロイ済みアプリケーション
+
+- [フロントエンド](https://blog-mern-app-front-web.onrender.com/posts)
+- [バックエンド API](https://blog-mern-app-1lw2.onrender.com/posts/)
+
+## 技術スタック
+
+このプロジェクトでは以下の技術を使用しています：
+
+### フロントエンド
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-15.2.0-000000?style=flat-square&logo=next.js&logoColor=white)
+![Material UI](https://img.shields.io/badge/Material_UI-6.4.5-007FFF?style=flat-square&logo=mui&logoColor=white)
+![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2.5.1-764ABC?style=flat-square&logo=redux&logoColor=white)
+![React Redux](https://img.shields.io/badge/React_Redux-9.2.0-764ABC?style=flat-square&logo=redux&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-1.7.9-5A29E4?style=flat-square&logo=axios&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/React_Hook_Form-7.54.2-EC5990?style=flat-square&logo=reacthookform&logoColor=white)
+![SWR](https://img.shields.io/badge/SWR-2.3.2-000000?style=flat-square&logo=vercel&logoColor=white)
+![Zod](https://img.shields.io/badge/Zod-3.24.2-3068B7?style=flat-square&logo=zod&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-9.20.1-4B32C3?style=flat-square&logo=eslint&logoColor=white)
+
+### バックエンド
+![Node.js](https://img.shields.io/badge/Node.js-22.12.0-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-4.x-000000?style=flat-square&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-8.11.0-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007ACC?style=flat-square&logo=typescript&logoColor=white)
+
+### インフラ・ツール
+![Docker](https://img.shields.io/badge/Docker-20.10-2496ED?style=flat-square&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2025-2088FF?style=flat-square&logo=github-actions&logoColor=white)
+![Render](https://img.shields.io/badge/Render-Deployed-46E3B7?style=flat-square&logo=render&logoColor=white)
 
 ## 目次
 - [概要](#概要)
 - [ディレクトリ構成](#ディレクトリ構成)
 - [セットアップ方法](#セットアップ方法)
 - [使用方法](#使用方法)
-- [技術スタック](#技術スタック)
-- [ライセンス](#ライセンス)
+- [環境変数の一覧](#環境変数の一覧)
 - [トラブルシューティング](#トラブルシューティング)
 
 ## 概要
 
-このプロジェクトは、MERNスタック（MongoDB, Express, React, Node.js）を使用して作成したウェブアプリケーションです。アプリケーションの目的や概要を簡潔に説明します。
+このプロジェクトは、MERNスタック（MongoDB, Express, React, Node.js）を使用して作成したブログアプリケーションです。ユーザーは投稿の閲覧、作成、編集、削除などの機能を利用できます。
 
 ## ディレクトリ構成
 
-このプロジェクトのディレクトリ構成は次のようになっています。
+このプロジェクトのディレクトリ構成は次のようになっています：
 
 ```plaintext
 /BLOG-MERN-APP                # プロジェクトのルートディレクトリ
-├── /app                       # Next.jsのappディレクトリ（App Router）
-│   ├── /layout.tsx            # レイアウトコンポーネント
-│   ├── /page.tsx              # ルートページ
-│   ├── /error.tsx             # エラーページ
-│   ├── /loading.tsx           # ローディングページ
-│   ├── /post                  # 投稿関連のルート
-│   │   ├── /page.tsx          # 投稿のページ
-│   │   └── /loading.tsx       # 投稿ページ用のローディング表示
-│   └── /about                 # Aboutページ
-│       └── /page.tsx          # Aboutページのコンテンツ
-├── /components                # 再利用可能なコンポーネント
-│   ├── /elements              # UI要素のコンポーネント
-│   │   ├── /Button            # ボタンコンポーネント
-│   │   │   └── Button.tsx
-│   │   ├── /Tab               # タブコンポーネント
-│   │   │   └── Tab.tsx
-│   │   ├── /Table             # テーブルコンポーネント
-│   │   │   └── Table.tsx
-│   │   ├── /Alert             # アラートコンポーネント
-│   │   │   └── Alert.tsx
-│   │   ├── /Breadcrumb        # パンくずリストコンポーネント
-│   │   │   └── Breadcrumb.tsx
-│   │   ├── /Loading           # ローディングコンポーネント
-│   │   │   └── Loading.tsx
-│   │   ├── /Menu              # メニューコンポーネント
-│   │   │   └── Menu.tsx
-│   │   ├── /Modal             # モーダルコンポーネント
-│   │   │   └── Modal.tsx
-│   │   ├── /Select            # セレクトボックス関連
-│   │   │   ├── Select.tsx
-│   │   │   ├── RadioList.tsx
-│   │   │   ├── Checkbox.tsx
-│   │   │   └── Dropdown.tsx
-│   │   └── /Card              # カードコンポーネント
-│   │       └── Card.tsx
-│   └── /layouts               # レイアウトコンポーネント
-│       └── /Header            # ヘッダー
-│           └── Header.tsx
-├── /features                  # 機能ごとのディレクトリ
-│   └── /post                   # 投稿関連の機能
-│       ├── /api               # API関連の処理
-│       │   └── getPost.ts      # 投稿の取得処理
-│       ├── /styles             # スタイル関連
-│       ├── /components         # 投稿ページのコンポーネント
-│       │   ├── Post.tsx        # 投稿コンポーネント
-│       │   └── Posts.tsx       # 複数の投稿を表示
-│       ├── /hooks              # カスタムフック
-│       │   └── usePost.ts      # 投稿取得のカスタムフック
-│       └── /types              # 型定義
-│           └── index.ts
-├── /hooks                      # グローバルで使うカスタムフック
-├── /styles                     # グローバルなスタイル
-├── /types                      # 型定義
-├── /libs                       # ライブラリ
-└── /utils                      # ヘルパー関数やユーティリティ
-├── /docker-compose.yml         # Docker Compose設定ファイル
-├── /README.md                  # プロジェクトの概要とセットアップ手順
-├── /.gitignore                 # Gitの無視ファイル（node_modulesやDockerのキャッシュなど）
-├── /package.json               # プロジェクト全体の依存関係（サーバーとクライアントをまとめたもの、または空のファイル）
-├── /.github                    # GitHub関連の設定ファイル
-│   ├── /workflows              # GitHub Actionsのワークフロー設定ファイル
-│   │   ├── ci.yml              # CI用GitHub Actions設定ファイル
-│   │   ├── deploy.yml          # CD用GitHub Actions設定ファイル
-│   │   ├── lint.yml            # Linting用GitHub Actions設定ファイル
-│   │   ├── coverage.yml        # コードカバレッジ用GitHub Actions設定ファイル
-│   │   ├── release.yml         # リリース用GitHub Actions設定ファイル
-│   │   └── manual_trigger.yml  # 手動トリガー用GitHub Actions設定ファイル
-│   ├── /ISSUE_TEMPLATE         # Issue用のテンプレート
-│   │   ├── bug_report.md       # バグ報告用テンプレート
-│   │   └── feature_request.md  # 機能リクエスト用テンプレート
-│   └── /PULL_REQUEST_TEMPLATE.md # プルリクエスト用のテンプレート
-
+├── /frontend                 # フロントエンド（Next.js）
+│   ├── /app                  # Next.jsのappディレクトリ（App Router）
+│   │   ├── /layout.tsx       # レイアウトコンポーネント
+│   │   ├── /page.tsx         # ルートページ
+│   │   ├── /error.tsx        # エラーページ
+│   │   ├── /loading.tsx      # ローディングページ
+│   │   └── /posts            # 投稿関連のルート
+│   ├── /components           # 再利用可能なコンポーネント
+│   ├── /hooks                # カスタムフック
+│   ├── /styles               # スタイル関連
+│   ├── /types                # 型定義
+│   └── /utils                # ヘルパー関数やユーティリティ
+├── /backend                  # バックエンド（Node.js + Express）
+│   ├── /src                  # ソースコード
+│   │   ├── /config           # 設定ファイル
+│   │   ├── /models           # データモデル
+│   │   ├── /server.ts        # サーバー設定
+│   │   └── /index.ts         # エントリーポイント
+│   └── /dist                 # コンパイル後のファイル
+├── /.github                  # GitHub関連の設定ファイル
+│   └── /workflows            # GitHub Actionsのワークフロー設定
+│       ├── /lint.yml         # リント用の設定
+│       └── /cd.yml           # 継続的デリバリー用の設定
+└── /docker-compose.yml       # Docker Compose設定ファイル
 ```
-
-
-
-
-- **`/client`**: フロントエンド（React）アプリケーションのコードが含まれます。
-- **`/server`**: バックエンド（Node.js + Express）APIサーバーのコードが含まれます。
-- **`/docker-compose.yml`**: Dockerコンテナを一括で管理する設定ファイルです。
-- **`README.md`**: プロジェクトのドキュメントです。
 
 ## セットアップ方法
 
@@ -138,30 +91,36 @@ BLOG MERN APP
 
 - Node.js（バージョン16以上推奨）
 - Docker（Docker Composeも含む）
-- MongoDB（Docker Composeで管理）
+- MongoDB（Docker Composeで管理、またはMongoDBアトラス）
 
 ### 2. ローカル環境の構築
 
-
-1. .env ファイルを以下の環境変数例と[環境変数の一覧](#環境変数の一覧)を元に作成
-   ```.env
-   MYSQL_ROOT_PASSWORD=root
-   MYSQL_DATABASE=django-db
-   MYSQL_USER=django
-   MYSQL_PASSWORD=django
-   MYSQL_HOST=db
-   MYSQL_PORT=3306
-   SECRET_KEY=django
-   DJANGO_SETTINGS_MODULE=project.settings.local
-   ```
-2. リポジトリをクローンします。
+1. リポジトリをクローンします。
 
    ```bash
-   git clone git@github.com:yoshihama-nineball/BLOG-MERN-APP.git
+   git clone https://github.com/yoshihama-nineball/BLOG-MERN-APP.git
    cd BLOG-MERN-APP
    ```
 
-3. Docker Composeを使ってすべてのサービスを起動します。
+2. フロントエンドのセットアップ
+
+   ```bash
+   cd frontend
+   yarn install
+   # .env.localを作成して環境変数を設定
+   yarn dev
+   ```
+
+3. バックエンドのセットアップ
+
+   ```bash
+   cd backend
+   yarn install
+   # .envを作成して環境変数を設定
+   yarn dev
+   ```
+
+4. Docker Composeを使用する場合
 
    ```bash
    docker compose up --build
@@ -169,114 +128,98 @@ BLOG MERN APP
 
    サーバーが起動し、MongoDBが接続されるのを確認します。
 
-4. サーバーとクライアントの起動
-   サーバーはlocalhost:5000でアクセスできます。
-   クライアントはlocalhost:3000で表示されます。
+## 使用方法
 
-5. 開発用コマンド
+- フロントエンドは `http://localhost:3000` でアクセスできます
+- バックエンドAPIは `http://localhost:5000` で実行されます
 
-以下のコマンドを使用して、コードの品質管理を行うことができます：
+### 開発用コマンド
+
+フロントエンド（Next.js）:
 
 ```bash
-# コードのフォーマットとリントを同時に実行
-yarn fix
-```
+# 開発サーバーの起動
+yarn dev
 
-# 個別に実行する場合
-```bash
-# Prettierによるコードフォーマット
+# ビルド
+yarn build
+
+# プロダクションサーバーの起動
+yarn start
+
+# テストの実行
+yarn test
+
+# コードフォーマット
 yarn format
-```
 
-```bash
-# ESLintによるコード品質チェック
+# リントチェック
 yarn lint
 ```
 
-### 3. 環境変数の一覧
+バックエンド:
 
-<!-- TODO: 後で編集。テンプレ -->
+```bash
+# 開発サーバーの起動
+yarn dev
 
-| 変数名                 | 役割                                      | デフォルト値                       | DEV 環境での値                           |
-| ---------------------- | ----------------------------------------- | ---------------------------------- | ---------------------------------------- |
-| MYSQL_ROOT_PASSWORD    | MySQL のルートパスワード（Docker で使用） | root                               |                                          |
-| MYSQL_DATABASE         | MySQL のデータベース名（Docker で使用）   | django-db                          |                                          |
-| MYSQL_USER             | MySQL のユーザ名（Docker で使用）         | django                             |                                          |
-| MYSQL_PASSWORD         | MySQL のパスワード（Docker で使用）       | django                             |                                          |
-| MYSQL_HOST             | MySQL のホスト名（Docker で使用）         | db                                 |                                          |
-| MYSQL_PORT             | MySQL のポート番号（Docker で使用）       | 3306                               |                                          |
-| SECRET_KEY             | Django のシークレットキー                 | secretkey                          | 他者に推測されないランダムな値にすること |
-| ALLOWED_HOSTS          | リクエストを許可するホスト名              | localhost 127.0.0.1 [::1] back web | フロントのホスト名                       |
-| DEBUG                  | デバッグモードの切り替え                  | True                               | False                                    |
-| TRUSTED_ORIGINS        | CORS で許可するオリジン                   | http://localhost                   |                                          |
-| DJANGO_SETTINGS_MODULE | Django アプリケーションの設定モジュール   | project.settings.local   
+# ビルド
+yarn build
 
-## 使用方法
-サーバーAPIにアクセスするには、/apiエンドポイントを使用します。例えば、GET /api/tasksでタスクリストを取得できます。
+# プロダクションサーバーの起動
+yarn start
 
-クライアント側では、ReactのコンポーネントからバックエンドAPIを呼び出してデータを表示します。
+# テストの実行
+yarn test
 
-## 技術スタック
-<!-- TODO: バックエンド側もインストールしたら反映する    -->
-| 言語・フレームワーク      | バージョン       |
-| ------------------------- | ---------------- |
-| Node.js                   | 16.x             |
-| React                     | 19.0.0           |
-| Next.js                   | 15.1.7           |
-| Axios                     | 1.7.9            |
-| React-Redux               | 9.2.0            |
-| React-Query               | 5.66.3           |
-| Formik                    | 2.4.6            |
-| Yup                       | 1.6.1            |
-| TailwindCSS               | 4.0.6            |
-| TypeScript                | 5.0              |
-| ESLint                    | 9.20.1           |
-| Vite                      | 6.1.0            |
-| Docker                    | 20.10            |
-| GitHub Actions            | 2025             |
+# コードフォーマット
+yarn format
+```
 
-## ライセンス
-MITライセンスで公開しています。詳細についてはLICENSEファイルをご覧ください。
+## 環境変数の一覧
+
+### フロントエンド (.env.local)
+
+| 変数名 | 説明 | デフォルト値 | 
+|--------|------|-------------|
+| NEXT_PUBLIC_BASE_URL | バックエンドAPIのURL | http://localhost:5000/api/v1/posts |
+
+### バックエンド (.env)
+
+| 変数名 | 説明 | デフォルト値 |
+|--------|------|-------------|
+| PORT | サーバーのポート番号 | 5000 |
+| MONGODB_URI | MongoDBの接続文字列 | mongodb://localhost:27017/blog-app |
+| JWT_SECRET | JWT認証用の秘密鍵 | your_secret_key |
+| NODE_ENV | 実行環境 | development |
 
 ## トラブルシューティング
 
-### .env: no such file or directory
+### MongoDB接続エラー
 
-.env ファイルがないので環境変数の一覧を参考に作成しましょう
-
-### docker daemon is not running
-
-Docker Desktop が起動できていないので起動させましょう
+MongoDB Atlasを使用している場合は、IPアドレスがアクセス許可リストに追加されているか確認してください。
+Renderなどのクラウドサービスから接続する場合は、`0.0.0.0/0`を許可リストに追加することで、どのIPアドレスからもアクセスできるようになります。
 
 ### Ports are not available: address already in use
 
-別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります
-<br>
-下記記事を参考にしてください
-<br>
-[コンテナ起動時に Ports are not available: address already in use が出た時の対処法について](https://qiita.com/shun198/items/ab6eca4bbe4d065abb8f)
+別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります。
+以下のコマンドで使用中のポートを確認し、必要に応じて停止またはポート番号を変更してください：
 
+```bash
+# Linuxの場合
+sudo lsof -i :5000
+sudo lsof -i :3000
 
-### 各セクションの説明
+# Windowsの場合
+netstat -ano | findstr :5000
+netstat -ano | findstr :3000
+```
 
-1. **概要**:
-   - プロジェクトの目的や簡単な説明を記載します。MERNスタックの特徴やアプリケーションがどのようなことを行うかを説明します。
+### Docker関連のエラー
 
-2. **ディレクトリ構成**:
-   - プロジェクトのファイルとディレクトリの構成をツリー形式で示し、それぞれの役割や目的について簡潔に説明します。
+- **.env: no such file or directory**: 環境変数ファイルを作成してください
+- **docker daemon is not running**: Docker Desktopが起動していることを確認してください
 
-3. **セットアップ方法**:
-   - プロジェクトをローカルで実行するための手順を記載します。Docker Composeを使ったセットアップ方法や依存関係のインストール方法を詳細に説明します。
+## ライセンス
 
-4. **使用方法**:
-   - プロジェクトの利用方法について説明します。バックエンドのAPIエンドポイントや、フロントエンドからのデータの扱い方、ユーザーインターフェースの使い方などを記載します。
-
-5. **技術スタック**:
-   - プロジェクトで使用している技術（MongoDB、Express、React、Node.jsなど）について説明します。
-
-6. **ライセンス**:
-   - プロジェクトのライセンス情報を記載します。例えば、MITライセンスであればその旨を記載し、ライセンスファイルがある場合はその場所を示します。
-
-7. **トラブルシューティング**:
-   - 
-
+MITライセンスで公開しています。詳細についてはLICENSEファイルをご覧ください。
