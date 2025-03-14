@@ -10,12 +10,8 @@ import {
   Box,
   Button,
   CircularProgress,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   Paper,
+  Stack,
   Typography,
 } from '@mui/material'
 import Link from 'next/link'
@@ -24,6 +20,7 @@ import React, { useState } from 'react'
 import useSWR, { mutate } from 'swr'
 import useSWRMutation from 'swr/mutation'
 import { deletePostAPI, fetchAllPosts } from '../../lib/api/postsAPI'
+import ConfirmDialog from '../components/ui/dialogs/ConfirmDialog'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -110,7 +107,7 @@ const PostsList: React.FC = () => {
               {post.title}
             </Typography>
             <Typography>{post.description}</Typography>
-            <Box sx={{ marginTop: 2 }}>
+            <Stack direction="row" spacing={2} sx={{ marginTop: 2 }}>
               <Link href={`/posts/${post._id}`} passHref>
                 <Button
                   variant="contained"
@@ -138,33 +135,20 @@ const PostsList: React.FC = () => {
               >
                 削除
               </Button>
-            </Box>
+            </Stack>
           </Paper>
         ))}
 
-      <Dialog
+      <ConfirmDialog
         open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {'投稿を削除しますか？'}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            本当に削除しますか？この操作は元に戻せません。
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            キャンセル
-          </Button>
-          <Button onClick={deleteHandler} color="error">
-            削除
-          </Button>
-        </DialogActions>
-      </Dialog>
+        title="投稿を削除しますか？"
+        content="本当に削除しますか？この操作は元に戻せません。"
+        confirmButtonText="削除"
+        cancelButtonText="キャンセル"
+        confirmButtonColor="error"
+        onConfirm={deleteHandler}
+        onCancel={handleClose}
+      />
     </Box>
   )
 }
