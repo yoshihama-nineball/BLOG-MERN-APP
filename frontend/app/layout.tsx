@@ -1,8 +1,15 @@
 // server component
+import { Metadata } from 'next'
 import React from 'react'
 import Loading from './components/feedback/Loading/Loading'
 import { ClientThemeProvider } from './components/layouts/ClientThemeProvider'
 import Header from './components/layouts/Header/Header'
+
+export const metadata: Metadata = {
+  title: 'BLOG MERN APP | TOP',
+  description: 'TOPページです',
+}
+
 
 export default function RootLayout({
   children,
