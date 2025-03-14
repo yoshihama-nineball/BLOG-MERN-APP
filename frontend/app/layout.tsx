@@ -1,10 +1,8 @@
-'use client'
-import React, { Suspense } from 'react'
-import NavBar from './components/elements/NavBar'
-import { ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import theme from '../styles/theme'
-import Loading from './components/elements/Loading'
+// server component
+import React from 'react'
+import Loading from './components/feedback/Loading/Loading'
+import { ClientThemeProvider } from './components/layouts/ClientThemeProvider'
+import Header from './components/layouts/Header/Header'
 
 export default function RootLayout({
   children,
@@ -14,12 +12,12 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <NavBar />
-          <Suspense fallback={<Loading />}>{children}</Suspense>
-        </ThemeProvider>
+        <ClientThemeProvider>
+          <Header />
+          <React.Suspense fallback={<Loading />}>{children}</React.Suspense>
+        </ClientThemeProvider>
       </body>
     </html>
   )
 }
+
