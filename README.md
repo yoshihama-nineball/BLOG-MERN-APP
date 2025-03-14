@@ -61,28 +61,154 @@
 /BLOG-MERN-APP                # プロジェクトのルートディレクトリ
 ├── /frontend                 # フロントエンド（Next.js）
 │   ├── /app                  # Next.jsのappディレクトリ（App Router）
-│   │   ├── /layout.tsx       # レイアウトコンポーネント
-│   │   ├── /page.tsx         # ルートページ
-│   │   ├── /error.tsx        # エラーページ
-│   │   ├── /loading.tsx      # ローディングページ
+│   │   ├── layout.tsx        # レイアウトコンポーネント
+│   │   ├── page.tsx          # ルートページ
+│   │   ├── error.tsx         # エラーページ
+│   │   ├── loading.tsx       # ローディングページ
+│   │   ├── forbidden.tsx     # アクセス制限ページ
+│   │   ├── /auth             # 認証関連のルート
+│   │   │   ├── /login        # ログイン
+│   │   │   │   └── page.tsx
+│   │   │   ├── /register     # ユーザー登録
+│   │   │   │   └── page.tsx
+│   │   │   ├── /forgot-password  # パスワードリセット要求
+│   │   │   │   └── page.tsx
+│   │   │   ├── /new-password     # 新パスワード設定
+│   │   │   │   └── page.tsx
+│   │   │   └── /confirm-account  # アカウント確認
+│   │   │       └── page.tsx
 │   │   └── /posts            # 投稿関連のルート
+│   │       ├── page.tsx      # 投稿一覧ページ
+│   │       ├── loading.tsx   # 投稿ルート専用ローディング
+│   │       └── /[id]         # 投稿詳細ページ
 │   ├── /components           # 再利用可能なコンポーネント
-│   ├── /hooks                # カスタムフック
+│   │   ├── /ui               # 基本的なUI要素
+│   │   │   ├── /Button
+│   │   │   │   ├── Button.tsx
+│   │   │   │   └── Button.test.tsx
+│   │   │   ├── /Input
+│   │   │   │   ├── Input.tsx
+│   │   │   │   └── Input.test.tsx
+│   │   │   └── /Card
+│   │   │       ├── Card.tsx
+│   │   │       └── Card.test.tsx
+│   │   ├── /feedback         # フィードバック関連
+│   │   │   ├── /Loading
+│   │   │   │   ├── Loading.tsx
+│   │   │   │   └── Loading.test.tsx
+│   │   │   └── /Alert
+│   │   │       ├── Alert.tsx
+│   │   │       └── Alert.test.tsx
+│   │   ├── /layouts          # レイアウト関連
+│   │   │   ├── /Header
+│   │   │   │   ├── Header.tsx
+│   │   │   │   └── Header.test.tsx
+│   │   │   └── /Footer
+│   │   │       ├── Footer.tsx
+│   │   │       └── Footer.test.tsx
+│   │   ├── /forms            # フォーム関連
+│   │   │   ├── /TextField
+│   │   │   │   ├── TextField.tsx
+│   │   │   │   └── TextField.test.tsx
+│   │   │   └── /Select
+│   │   │       ├── Select.tsx
+│   │   │       └── Select.test.tsx
+│   │   ├── /navigation       # ナビゲーション関連
+│   │   │   ├── /Breadcrumbs
+│   │   │   │   ├── Breadcrumbs.tsx
+│   │   │   │   └── Breadcrumbs.test.tsx
+│   │   │   └── /Pagination
+│   │   │       ├── Pagination.tsx
+│   │   │       └── Pagination.test.tsx
+│   │   └── /data-display     # データ表示関連
+│   │       ├── /Table
+│   │       │   ├── Table.tsx
+│   │       │   └── Table.test.tsx
+│   │       └── /List
+│   │           ├── List.tsx
+│   │           └── List.test.tsx
+│   ├── /features             # 機能ごとのモジュール
+│   │   ├── /auth             # 認証機能
+│   │   │   ├── /api          # 認証関連のAPI呼び出し
+│   │   │   │   ├── login.ts
+│   │   │   │   ├── register.ts
+│   │   │   │   ├── resetPassword.ts
+│   │   │   │   └── confirmAccount.ts
+│   │   │   ├── /components   # 認証関連のコンポーネント
+│   │   │   │   ├── LoginForm.tsx
+│   │   │   │   ├── RegisterForm.tsx
+│   │   │   │   ├── ForgotPasswordForm.tsx
+│   │   │   │   └── NewPasswordForm.tsx
+│   │   │   ├── /hooks        # 認証関連のカスタムフック
+│   │   │   │   ├── useAuth.ts
+│   │   │   │   └── useAuth.test.ts
+│   │   │   └── /types        # 認証機能特有の型定義
+│   │   │       └── index.ts
+│   │   └── /post             # 投稿機能
+│   │       ├── /api          # 投稿関連のAPI呼び出し
+│   │       │   ├── getPost.ts
+│   │       │   └── getPost.test.ts
+│   │       ├── /components   # 投稿関連のコンポーネント
+│   │       │   ├── Post.tsx
+│   │       │   └── Posts.tsx
+│   │       ├── /hooks        # 投稿関連のカスタムフック
+│   │       │   ├── usePost.ts
+│   │       │   └── usePost.test.ts
+│   │       └── /types        # 投稿機能特有の型定義
+│   │           └── index.ts
+│   ├── /hooks                # 共通カスタムフック
+│   │   ├── useCustomHook.ts
+│   │   └── useCustomHook.test.ts
 │   ├── /styles               # スタイル関連
-│   ├── /types                # 型定義
+│   ├── /types                # アプリケーション全体の型定義
+│   │   ├── index.ts          # すべての型をエクスポートするバレルファイル
+│   │   ├── board.ts          # 掲示板関連の型
+│   │   ├── post.ts           # 投稿関連の共通型
+│   │   ├── comment.ts        # コメント関連の型
+│   │   ├── user.ts           # ユーザー関連の型
+│   │   ├── notification.ts   # 通知関連の型
+│   │   ├── api.ts            # API関連の型定義
+│   │   └── ui.ts             # UI関連の共通型
 │   └── /utils                # ヘルパー関数やユーティリティ
+│       ├── helper.ts
+│       └── helper.test.ts
 ├── /backend                  # バックエンド（Node.js + Express）
 │   ├── /src                  # ソースコード
 │   │   ├── /config           # 設定ファイル
+│   │   ├── /controllers      # コントローラー
+│   │   │   ├── /auth         # 認証関連コントローラー
+│   │   │   │   ├── login.ts
+│   │   │   │   ├── register.ts
+│   │   │   │   ├── resetPassword.ts
+│   │   │   │   └── confirmAccount.ts
+│   │   │   └── /posts        # 投稿関連コントローラー
+│   │   ├── /middleware       # ミドルウェア
+│   │   │   ├── auth.ts       # 認証ミドルウェア
+│   │   │   └── error.ts      # エラーハンドリングミドルウェア
 │   │   ├── /models           # データモデル
+│   │   │   ├── User.ts
+│   │   │   └── Post.ts
+│   │   ├── /routes           # APIルート
+│   │   │   ├── /auth.ts      # 認証関連ルート
+│   │   │   └── /posts.ts     # 投稿関連ルート
+│   │   ├── /types            # バックエンド用の型定義
+│   │   ├── /utils            # ユーティリティ関数
 │   │   ├── /server.ts        # サーバー設定
 │   │   └── /index.ts         # エントリーポイント
 │   └── /dist                 # コンパイル後のファイル
+├── /docker                   # Docker関連ファイル
+│   ├── /frontend             # フロントエンド用Docker設定
+│   │   └── Dockerfile
+│   └── /backend              # バックエンド用Docker設定
+│       └── Dockerfile
 ├── /.github                  # GitHub関連の設定ファイル
 │   └── /workflows            # GitHub Actionsのワークフロー設定
 │       ├── /lint.yml         # リント用の設定
 │       └── /cd.yml           # 継続的デリバリー用の設定
-└── /docker-compose.yml       # Docker Compose設定ファイル
+├── /docker-compose.yml       # Docker Compose設定ファイル
+├── /.gitignore               # Git除外ファイル設定
+├── /README.md                # プロジェクト説明
+└── /package.json             # ルートパッケージ設定（モノレポ用）
 ```
 
 ## セットアップ方法
