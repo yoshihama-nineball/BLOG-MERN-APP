@@ -9,7 +9,7 @@ import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import CodeBlock from '../../components/CodeBlock'
-import Loading from '../../components/elements/Loading'
+import Loading from '../../components/feedback/Loading/Loading'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
