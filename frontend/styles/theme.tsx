@@ -18,6 +18,12 @@ const theme = createTheme({
       default: '#f7f9e0', // より黄色みのある薄い背景色
       paper: '#ffffff',
     },
+    neutral: {
+      main: '#9e9e9e',
+      light: '#cfcfcf',
+      dark: '#707070',
+      contrastText: '#ffffff',
+    },
     text: {
       primary: '#3c4c34', // 緑に合うダークテキスト
       secondary: '#6b7d63', // 緑に合う薄めのテキスト
@@ -85,6 +91,12 @@ declare module '@mui/material/styles' {
       middle: string
       end: string
     }
+    neutral: {
+      main: string
+      light: string
+      dark: string
+      contrastText: string
+    }
   }
 
   interface PaletteOptions {
@@ -93,6 +105,26 @@ declare module '@mui/material/styles' {
       middle: string
       end: string
     }
+    neutral?: {
+      main: string
+      light: string
+      dark: string
+      contrastText: string
+    }
+  }
+}
+
+// Buttonコンポーネントでneutralカラーを使えるようにする
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    neutral: true;
+  }
+}
+
+// IconButtonコンポーネントでneutralカラーを使えるようにする
+declare module '@mui/material/IconButton' {
+  interface IconButtonPropsColorOverrides {
+    neutral: true;
   }
 }
 
