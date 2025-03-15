@@ -1,29 +1,88 @@
-/** @jsxImportSource @emotion/react */
+'use client'
+
+import {
+  Button as MuiButton,
+  ButtonProps as MuiButtonProps,
+} from '@mui/material'
+import Link from 'next/link'
 import React from 'react'
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
 
-const buttonStyle = css`
-  background-color: #0070f3;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'delete'
+  | 'success'
+  | 'warning'
+  | 'info'
 
-  &:hover {
-    background-color: #005bb5;
+export interface ButtonProps extends Omit<MuiButtonProps, 'color' | 'variant'> {
+  variant?: ButtonVariant
+  href?: string
+  loading?: boolean
+  startIcon?: React.ReactNode
+  endIcon?: React.ReactNode
+}
+/**
+ * 共通ボタンコンポーネント
+ * Material UIのボタンをラップして、アプリ全体で一貫したスタイルを提供します
+ */
+const Button: React.FC<ButtonProps> = ({
+  children,
+  variant = 'primary',
+  href,
+  loading = false,
+  disabled = false,
+  startIcon,
+  endIcon,
+  ...props
+}) => {
+  // バリアントに基づいてMUI用のpropsを設定
+  const getButtonProps = (): Partial<MuiButtonProps> => {
+    const baseProps: Partial<MuiButtonProps> = {
+      variant: 'contained',
+      startIcon,
+      endIcon,
+      disabled: disabled || loading,
+    }
+
+    // 各バリアント別の設定
+    switch (variant) {
+      case 'primary':
+        return { ...baseProps, color: 'primary' }
+      case 'secondary':
+        return { ...baseProps, color: 'secondary' }
+      case 'delete':
+        return { ...baseProps, color: 'error' }
+      case 'success':
+        return { ...baseProps, color: 'success' }
+      case 'warning':
+        return { ...baseProps, color: 'warning' }
+      case 'info':
+        return { ...baseProps, color: 'info' }
+      default:
+        return { ...baseProps, color: 'primary' }
+    }
   }
-`
 
-const StyledButton = styled.button`
-  ${buttonStyle}
-`
+  const buttonProps = getButtonProps()
 
-const ButtonComponent: React.FC = () => {
-  return <StyledButton>Click Me!</StyledButton>
+  // リンク用ボタン
+  if (href) {
+    return (
+      <Link href={href} passHref style={{ textDecoration: 'none' }}>
+        <MuiButton {...buttonProps} {...props}>
+          {children}
+        </MuiButton>
+      </Link>
+    )
+  }
+
+  // 通常ボタン
+  return (
+    <MuiButton {...buttonProps} {...props}>
+      {loading ? 'Loading...' : children}
+    </MuiButton>
+  )
 }
 
-export default ButtonComponent
+export default Button

@@ -8,18 +8,17 @@ import {
 import {
   Alert,
   Box,
-  Button,
   CircularProgress,
   Paper,
   Stack,
   Typography,
 } from '@mui/material'
-import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import React, { useState } from 'react'
 import useSWR, { mutate } from 'swr'
 import useSWRMutation from 'swr/mutation'
 import { deletePostAPI, fetchAllPosts } from '../../lib/api/postsAPI'
+import Button from '../components/ui/Button/Button'
 import ConfirmDialog from '../components/ui/dialogs/ConfirmDialog'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -108,30 +107,25 @@ const PostsList: React.FC = () => {
             </Typography>
             <Typography>{post.description}</Typography>
             <Stack direction="row" spacing={2} sx={{ marginTop: 2 }}>
-              <Link href={`/posts/${post._id}`} passHref>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<VisibilityIcon />}
-                >
-                  詳細
-                </Button>
-              </Link>
-              <Link href={`/posts/${post._id}/edit`} passHref>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<EditIcon />}
-                >
-                  Edit
-                </Button>
-              </Link>
               <Button
-                variant="contained"
-                color="error"
-                onClick={() => handleClickOpen(post._id)}
-                disabled={isMutating}
+                variant="primary"
+                startIcon={<VisibilityIcon />}
+                href={`/posts/${post._id}`}
+              >
+                詳細
+              </Button>
+              <Button
+                variant="secondary"
+                startIcon={<EditIcon />}
+                href={`/posts/${post._id}/edit`}
+              >
+                Edit
+              </Button>
+              <Button
+                variant="delete"
                 startIcon={<DeleteIcon />}
+                onClick={() => handleClickOpen(post._id)}
+                loading={isMutating}
               >
                 削除
               </Button>

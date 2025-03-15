@@ -4,11 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Alert,
   Box,
-  Button,
   CircularProgress,
   TextField,
   Typography,
 } from '@mui/material'
+import Button from 'app/components/ui/Button/Button'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
@@ -117,16 +117,14 @@ const EditPost: React.FC = () => {
         />
         <Button
           type="submit"
-          variant="contained"
-          color="primary"
-          // css={buttonStyle}
+          variant="primary"
         >
           更新
         </Button>
       </form>
       <Box sx={{ marginTop: 2 }}>
         <Link href={'/posts/'} passHref>
-          <Button variant="contained" color="secondary">
+          <Button variant="secondary">
             一覧に戻る
           </Button>
         </Link>

@@ -2,7 +2,8 @@
 
 // import { css } from '@emotion/react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Box, Button, Paper, TextField, Typography } from '@mui/material'
+import { Box, Paper, TextField, Typography } from '@mui/material'
+import Button from 'app/components/ui/Button/Button'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -90,15 +91,14 @@ const CreatePost: React.FC = () => {
               shrink: true,
             }}
           />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            // css={buttonStyle}
-          >
-            投稿
-          </Button>
         </Paper>
+        <Button
+          type="submit"
+          variant="primary"
+          sx={{ mt: 3 }}
+        >
+          投稿
+        </Button>
       </form>
       <Box sx={{ paddingTop: 4 }}>
         <Typography variant="h5" component="h2">

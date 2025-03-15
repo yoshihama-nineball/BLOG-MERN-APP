@@ -4,7 +4,8 @@ import { useParams, useSearchParams } from 'next/navigation'
 import React from 'react'
 import useSWR from 'swr'
 // import { fetchPost } from '../../../lib/api/postsAPI'
-import { Alert, Box, Button, Paper, Typography } from '@mui/material'
+import { Alert, Box, Paper, Typography } from '@mui/material'
+import Button from 'app/components/ui/Button/Button'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
@@ -55,9 +56,10 @@ const PostDetail: React.FC = () => {
           </ReactMarkdown>
         </Paper>
         <Link href="/posts/">
-          <Button variant="contained" color="primary" sx={{ marginTop: 2 }}>
+          <Button variant="primary" sx={{ marginTop: 2 }}>
             一覧に戻る
           </Button>
+
         </Link>
       </Box>
     </Box>
