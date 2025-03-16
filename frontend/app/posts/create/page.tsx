@@ -92,11 +92,7 @@ const CreatePost: React.FC = () => {
             }}
           />
         </Paper>
-        <Button
-          type="submit"
-          variant="primary"
-          sx={{ mt: 3 }}
-        >
+        <Button type="submit" variant="primary" sx={{ mt: 3 }}>
           投稿
         </Button>
       </form>

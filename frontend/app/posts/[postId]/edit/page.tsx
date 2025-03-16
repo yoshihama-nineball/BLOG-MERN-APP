@@ -115,18 +115,13 @@ const EditPost: React.FC = () => {
           multiline
           rows={4}
         />
-        <Button
-          type="submit"
-          variant="primary"
-        >
+        <Button type="submit" variant="primary">
           更新
         </Button>
       </form>
       <Box sx={{ marginTop: 2 }}>
         <Link href={'/posts/'} passHref>
-          <Button variant="secondary">
-            一覧に戻る
-          </Button>
+          <Button variant="secondary">一覧に戻る</Button>
         </Link>
       </Box>
     </Box>

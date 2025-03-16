@@ -1,14 +1,11 @@
 'use client'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import { useState } from 'react'
-// import Typography from '@mui/material/Typography'
 import styled from '@emotion/styled'
 import AddIcon from '@mui/icons-material/Add'
 import MenuIcon from '@mui/icons-material/Menu'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import SearchIcon from '@mui/icons-material/Search'
 import { Avatar, Box, Tab, Tabs, Theme } from '@mui/material'
+import AppBar from '@mui/material/AppBar'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
@@ -16,7 +13,9 @@ import IconButton from '@mui/material/IconButton'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
+import Toolbar from '@mui/material/Toolbar'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const StyledListItemText = styled(ListItemText)<{ theme: Theme }>`
   color: ${(props) => props.theme.palette.neutral.main};
@@ -169,24 +168,16 @@ const Header = () => {
         >
           <List>
             <ListItem component={Link} href="/">
-              <StyledListItemText
-                primary="Home"
-              />
+              <StyledListItemText primary="Home" />
             </ListItem>
             <ListItem component={Link} href="/posts">
-              <StyledListItemText
-                primary="最新"
-              />
+              <StyledListItemText primary="最新" />
             </ListItem>
             <ListItem component={Link} href="/ranking">
-              <StyledListItemText
-                primary="ユーザランキング"
-              />
+              <StyledListItemText primary="ユーザランキング" />
             </ListItem>
             <ListItem component={Link} href="/pricing">
-              <StyledListItemText
-                primary="価格"
-              />
+              <StyledListItemText primary="価格" />
             </ListItem>
           </List>
           <Divider />

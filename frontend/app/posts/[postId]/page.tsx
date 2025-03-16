@@ -59,7 +59,6 @@ const PostDetail: React.FC = () => {
           <Button variant="primary" sx={{ marginTop: 2 }}>
             一覧に戻る
           </Button>
-
         </Link>
       </Box>
     </Box>

@@ -24,9 +24,6 @@
     },
     "plugins": [
       {
-        "name": "typescript-tslint-plugin"
-      },
-      {
         "name": "next"
       }
     ]

@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description: '記事の編集ページ',
 }
 
-export default function EditLayout({ children }: {children: React.ReactNode}) {
+export default function EditLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return children
 }

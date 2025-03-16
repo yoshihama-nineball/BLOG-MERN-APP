@@ -117,14 +117,14 @@ declare module '@mui/material/styles' {
 // Buttonコンポーネントでneutralカラーを使えるようにする
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
-    neutral: true;
+    neutral: true
   }
 }
 
 // IconButtonコンポーネントでneutralカラーを使えるようにする
 declare module '@mui/material/IconButton' {
   interface IconButtonPropsColorOverrides {
-    neutral: true;
+    neutral: true
   }
 }
 

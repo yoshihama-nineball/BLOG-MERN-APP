@@ -9,7 +9,11 @@ import Header from './components/layouts/Header/Header'
 export const metadata: Metadata = {
   title: 'BLOG MERN APP | TOP',
   description: 'TOPページです',
+  icons: {
+    icon: '/icon.png',
+  },
 }
+
 
 
 
@@ -30,4 +34,3 @@ export default function RootLayout({
     </html>
   )
 }
-
