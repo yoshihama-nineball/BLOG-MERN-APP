@@ -1,10 +1,10 @@
 // server component
 import { Metadata } from 'next'
 import React from 'react'
-import Loading from './components/feedback/Loading/Loading'
-import { ClientThemeProvider } from './components/layouts/ClientThemeProvider'
-import Footer from './components/layouts/Footer/Footer'
-import Header from './components/layouts/Header/Header'
+import Loading from '../components/feedback/Loading/Loading'
+import { ClientThemeProvider } from '../components/layouts/ClientThemeProvider'
+import Footer from '../components/layouts/Footer/Footer'
+import Header from '../components/layouts/Header/Header'
 
 export const metadata: Metadata = {
   title: 'BLOG MERN APP | TOP',
