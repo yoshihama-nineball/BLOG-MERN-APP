@@ -99,6 +99,12 @@
 │   │   │   └── /Alert
 │   │   │       ├── Alert.tsx
 │   │   │       └── Alert.test.tsx
+│   │   │   └── /ErrorMessage
+│   │   │       ├── ErrorMessage.tsx
+│   │   │       └── ErrorMessage.test.tsx
+│   │   │   └── /SuccessMessage
+│   │   │       ├── SuccessMessage.tsx
+│   │   │       └── SuccessMessage.test.tsx
 │   │   ├── /layouts          # レイアウト関連
 │   │   │   ├── /Header
 │   │   │   │   ├── Header.tsx
