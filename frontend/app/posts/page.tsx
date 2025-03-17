@@ -1,12 +1,12 @@
 'use client'
 
+import Alert from '@/components/feedback/Alert/Alert'
 import {
   Delete as DeleteIcon,
   Edit as EditIcon,
   Visibility as VisibilityIcon,
 } from '@mui/icons-material'
 import {
-  Alert,
   Box,
   CircularProgress,
   Paper,
@@ -17,9 +17,9 @@ import { useSearchParams } from 'next/navigation'
 import React, { useState } from 'react'
 import useSWR, { mutate } from 'swr'
 import useSWRMutation from 'swr/mutation'
+import Button from '../../components/ui/Button/Button'
+import ConfirmDialog from '../../components/ui/dialogs/ConfirmDialog'
 import { deletePostAPI, fetchAllPosts } from '../../lib/api/postsAPI'
-import Button from '../components/ui/Button/Button'
-import ConfirmDialog from '../components/ui/dialogs/ConfirmDialog'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -85,7 +85,7 @@ const PostsList: React.FC = () => {
     <Box sx={{ padding: 2 }}>
       {isLoading && <CircularProgress />}
       {success && (
-        <Alert severity="success" sx={{ width: '20%' }} onClose={() => {}}>
+        <Alert severity="success" onClose={() => {}}>
           投稿が成功しました！
         </Alert>
       )}

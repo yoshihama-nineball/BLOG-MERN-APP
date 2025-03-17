@@ -4,13 +4,14 @@ import { useParams, useSearchParams } from 'next/navigation'
 import React from 'react'
 import useSWR from 'swr'
 // import { fetchPost } from '../../../lib/api/postsAPI'
-import { Alert, Box, Paper, Typography } from '@mui/material'
-import Button from 'app/components/ui/Button/Button'
+import Alert from '@/components/feedback/Alert/Alert'
+import { Box, Paper, Typography } from '@mui/material'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import CodeBlock from '../../components/CodeBlock'
-import Loading from '../../components/feedback/Loading/Loading'
+import CodeBlock from '../../../components/CodeBlock'
+import Loading from '../../../components/feedback/Loading/Loading'
+import Button from '../../../components/ui/Button/Button'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -39,7 +40,7 @@ const PostDetail: React.FC = () => {
       {isLoading && <Loading />}
       {success && (
         <Alert severity="success" onClose={() => {}}>
-          投稿が成功しました！
+          更新が成功しました！
         </Alert>
       )}
       {error && <Alert severity="error">{(error as Error).message}</Alert>}

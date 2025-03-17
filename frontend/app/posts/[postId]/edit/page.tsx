@@ -1,14 +1,13 @@
 'use client'
 
+import Alert from '@/components/feedback/Alert/Alert'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
-  Alert,
   Box,
   CircularProgress,
   TextField,
   Typography,
 } from '@mui/material'
-import Button from 'app/components/ui/Button/Button'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
@@ -16,6 +15,7 @@ import * as reactHookForm from 'react-hook-form'
 import { SubmitHandler } from 'react-hook-form'
 import useSWR, { mutate } from 'swr'
 import { z } from 'zod'
+import Button from '../../../../components/ui/Button/Button'
 import { updatePostAPI } from '../../../../lib/api/postsAPI'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL

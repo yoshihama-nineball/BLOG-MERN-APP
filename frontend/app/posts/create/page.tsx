@@ -3,13 +3,13 @@
 // import { css } from '@emotion/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Box, Paper, TextField, Typography } from '@mui/material'
-import Button from 'app/components/ui/Button/Button'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import ReactMarkdown from 'react-markdown'
 import rehypeHighlight from 'rehype-highlight'
 import { z } from 'zod'
+import Button from '../../../components/ui/Button/Button'
 import { createPostAPI } from '../../../lib/api/postsAPI'
 
 const postSchema = z.object({
