@@ -6,13 +6,7 @@ import {
   Edit as EditIcon,
   Visibility as VisibilityIcon,
 } from '@mui/icons-material'
-import {
-  Box,
-  CircularProgress,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material'
+import { Box, CircularProgress, Paper, Stack, Typography } from '@mui/material'
 import { useSearchParams } from 'next/navigation'
 import React, { useState } from 'react'
 import useSWR, { mutate } from 'swr'
