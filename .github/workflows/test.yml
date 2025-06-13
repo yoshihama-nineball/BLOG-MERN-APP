@@ -47,7 +47,7 @@ jobs:
         working-directory: ./backend
         run: yarn test
         env:
-          MONGO_URL: ${{ secrets.MONGO_URL }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
           PORT: ${{ secrets.PORT }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
   
@@ -61,7 +61,7 @@ jobs:
         working-directory: ./backend
         run: yarn coverage
         env:
-          MONGO_URL: ${{ secrets.MONGO_URL }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
           PORT: ${{ secrets.PORT }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
   

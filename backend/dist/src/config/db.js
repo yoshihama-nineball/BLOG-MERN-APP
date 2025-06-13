@@ -8,7 +8,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const colors_1 = __importDefault(require("colors"));
 const connectDB = async () => {
     try {
-        const url = process.env.MONGO_URL;
+        const url = process.env.MONGO_URI;
         const connecton = await mongoose_1.default.connect(url);
         console.log(connecton);
         console.log(colors_1.default.blue.bold(`mongoDBは接続しました`));

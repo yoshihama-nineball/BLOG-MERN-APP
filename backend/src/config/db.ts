@@ -3,7 +3,7 @@ import colors from 'colors'
 
 export const connectDB = async () => {
   try {
-    const url = process.env.MONGO_URL
+    const url = process.env.MONGO_URI
     const connecton = await mongoose.connect(url)
 
     console.log(connecton)

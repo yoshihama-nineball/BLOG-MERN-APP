@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
 interface PostData {
   postId?: string
@@ -37,43 +37,39 @@ export const createPostAPI = async (
   postData: PostData
 ): Promise<APIResponse<Post>> => {
   console.log(postData)
-  const response = await axios.post<APIResponse<Post>>(`${BASE_URL}/create`, {
+  const response = await axios.post<APIResponse<Post>>(`${BASE_URL}/api/v1/posts/create`, {
     title: postData.title,
     description: postData.description,
   })
   return response.data
 }
 
-// Update post API
+// Update post API - 修正後
 export const updatePostAPI = async (
   postId: string,
   postData: PostData
 ): Promise<APIResponse<Post>> => {
-  console.log(postData)
-  const response = await axios.put<APIResponse<Post>>(`${BASE_URL}/${postId}`, {
+  const response = await axios.put<APIResponse<Post>>(`${BASE_URL}/api/v1/posts/${postId}`, {
     title: postData.title,
     description: postData.description,
   })
   return response.data
 }
+
 // Fetch all posts
 export const fetchAllPosts = async (): Promise<APIResponse<Post[]>> => {
-  const response = await axios.get<APIResponse<Post[]>>(`${BASE_URL}`)
+  const response = await axios.get<APIResponse<Post[]>>(`${BASE_URL}/api/v1/posts`)
   return response.data
 }
 
 // Fetch post
 export const fetchPost = async (postId: string): Promise<APIResponse<Post>> => {
-  const response = await axios.get<APIResponse<Post>>(`${BASE_URL}/${postId}`)
+  const response = await axios.get<APIResponse<Post>>(`${BASE_URL}/api/v1/posts/${postId}`)
   return response.data
 }
 
 // Delete post API
-export const deletePostAPI = async (
-  postId: string
-): Promise<APIResponse<Post>> => {
-  const response = await axios.delete<APIResponse<Post>>(
-    `${BASE_URL}/${postId}`
-  )
+export const deletePostAPI = async (postId: string): Promise<APIResponse<Post>> => {
+  const response = await axios.delete<APIResponse<Post>>(`${BASE_URL}/api/v1/posts/${postId}`)
   return response.data
 }
