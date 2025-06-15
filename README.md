@@ -3,6 +3,8 @@
 > もやもやした気持ちをAIと一緒にリフレーミング（考え方を変える）して、心を軽くするためのアプリ
 TODO: イメージスクショ貼る
 
+![alt text](image.png)
+
 ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react&logoColor=black) ![Next.js](https://img.shields.io/badge/Next.js-15.2.0-000000?style=flat-square&logo=next.js&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-22.12.0-339933?style=flat-square&logo=node.js&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-8.11.0-47A248?style=flat-square&logo=mongodb&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007ACC?style=flat-square&logo=typescript&logoColor=white)
 
 ## 🌸 アプリのコンセプト
@@ -24,7 +26,7 @@ TODO: イメージスクショ貼る
 - **理由**: ありのままの気持ちと、その時頑張って考えた内容を大切にするため
 
 ### 💬 コメント機能
-- **自分の投稿のみ**: 自分が投稿したものにだけコメント可能
+- **自分の投稿のみ**: 自分が投稿したものにだけコメント可能(cashtrackerのmiddlewareのhasAccessと同じ要領)
 - **用途**: 時間が経って新しい気づきやリフレーミングが生まれた時に追加
 - **価値**: 思考の変化や成長過程を時系列で記録
 
