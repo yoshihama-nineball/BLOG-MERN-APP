@@ -120,7 +120,7 @@ const Header = () => {
               <Tab component={Link} href="/" label="Home" {...a11yProps(0)} />
               <Tab
                 component={Link}
-                href="/posts/create"
+                href="/posts/latest"
                 label="最新"
                 {...a11yProps(1)}
               />
@@ -149,7 +149,7 @@ const Header = () => {
             <Avatar {...stringAvatar('Kent Dodds')} />
             <Button
               component={Link}
-              href="/posts/create"
+              href="/posts/consultation"
               color="secondary"
               variant="contained"
               startIcon={<AddIcon />}

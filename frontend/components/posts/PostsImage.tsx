@@ -8,6 +8,7 @@ import {
   BookmarkBorder,
   Comment,
   FavoriteBorder,
+  Home,
   Search,
   Send,
   Sort,
@@ -15,6 +16,7 @@ import {
 } from '@mui/icons-material';
 import {
   Alert,
+  AppBar,
   Avatar,
   Box,
   Button,
@@ -40,7 +42,8 @@ import {
   Tabs,
   TextField,
   ThemeProvider,
-  Typography
+  Toolbar,
+  Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
@@ -394,6 +397,18 @@ const PostsPage: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      
+      {/* ヘッダー */}
+      <AppBar position="sticky" sx={{ bgcolor: 'secondary.main', color: 'text.primary' }}>
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
+            みかた 💕
+          </Typography>
+          <IconButton color="inherit" href="/">
+            <Home />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
 
       <Container maxWidth="md" sx={{ py: 3 }}>
         {/* 検索・フィルター */}

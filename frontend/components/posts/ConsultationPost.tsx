@@ -15,7 +15,6 @@ import {
   Alert,
   AppBar,
   Box,
-  Breadcrumbs,
   Button,
   Card,
   CardContent,
@@ -27,7 +26,6 @@ import {
   Divider,
   Fade,
   IconButton,
-  Link,
   Step,
   StepContent,
   StepLabel,
@@ -38,6 +36,37 @@ import {
   Typography
 } from '@mui/material';
 import React, { useState } from 'react';
+
+// 一時的にローカルでBreadcrumbs定義
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+const LocalBreadcrumbs: React.FC<{ items: BreadcrumbItem[] }> = ({ items }) => {
+  return (
+    <Box sx={{ mb: 3 }}>
+      {items.map((item, index) => (
+        <span key={index}>
+          {item.href ? (
+            <Typography 
+              component="span" 
+              sx={{ color: 'text.secondary', cursor: 'pointer' }}
+              onClick={() => window.location.href = item.href!}
+            >
+              {item.label}
+            </Typography>
+          ) : (
+            <Typography component="span" sx={{ color: 'text.primary' }}>
+              {item.label}
+            </Typography>
+          )}
+          {index < items.length - 1 && <Typography component="span" sx={{ mx: 1 }}>/</Typography>}
+        </span>
+      ))}
+    </Box>
+  );
+};
 
 // 修正されたテーマ - 淡いベージュがメイン、ピンクがベース
 const theme = createTheme({
@@ -233,7 +262,7 @@ const ConsultationPage: React.FC = () => {
             <ArrowBack />
           </IconButton>
           <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
-            💭 AIリフレーミング相談
+            💭 みかた AI相談
           </Typography>
           <IconButton 
             color="inherit" 
@@ -246,31 +275,11 @@ const ConsultationPage: React.FC = () => {
 
       <Container maxWidth="md" sx={{ py: 3 }}>
         {/* パンくずリスト */}
-        <Breadcrumbs sx={{ mb: 3 }}>
-          <Link 
-            href="/" 
-            color="inherit" 
-            underline="hover"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/';
-            }}
-          >
-            ホーム
-          </Link>
-          <Link 
-            href="/posts" 
-            color="inherit" 
-            underline="hover"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/posts';
-            }}
-          >
-            投稿一覧
-          </Link>
-          <Typography color="text.primary">AIリフレーミング相談</Typography>
-        </Breadcrumbs>
+        <LocalBreadcrumbs items={[
+          { label: 'ホーム', href: '/' },
+          { label: '投稿一覧', href: '/posts' },
+          { label: 'AIリフレーミング相談' }
+        ]} />
 
         {/* メインコンテンツ */}
         <Card sx={{ mb: 3 }}>
@@ -370,6 +379,36 @@ const ConsultationPage: React.FC = () => {
                     </Box>
                   ) : (
                     <Box>
+                      {/* 相談内容の振り返り */}
+                      <Card sx={{ mb: 3, bgcolor: 'secondary.light', border: '1px solid', borderColor: 'secondary.main' }}>
+                        <CardContent sx={{ p: 3 }}>
+                          <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, display: 'flex', alignItems: 'center' }}>
+                            💭 あなたの相談内容
+                          </Typography>
+                          <Typography variant="body1" sx={{ lineHeight: 1.7, mb: 2 }}>
+                            {consultation}
+                          </Typography>
+                          {selectedTags.length > 0 && (
+                            <Box>
+                              <Typography variant="caption" color="text.secondary" gutterBottom>
+                                選択されたタグ:
+                              </Typography>
+                              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                {selectedTags.map((tag) => (
+                                  <Chip
+                                    key={tag}
+                                    label={tag}
+                                    size="small"
+                                    color="secondary"
+                                    variant="filled"
+                                  />
+                                ))}
+                              </Box>
+                            </Box>
+                          )}
+                        </CardContent>
+                      </Card>
+                      
                       <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
                         あなたの状況を分析して、3つの角度からアドバイスを用意しました。
                       </Typography>
@@ -438,9 +477,64 @@ const ConsultationPage: React.FC = () => {
                 </StepLabel>
                 <StepContent>
                   <Box sx={{ mb: 3 }}>
-                    <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
                       AIのアドバイスを参考に、あなた自身の言葉で考えを整理してみてください。
                     </Typography>
+                    
+                    {/* 相談内容の振り返り */}
+                    <Card sx={{ mb: 3, bgcolor: 'secondary.light', border: '1px solid', borderColor: 'secondary.main' }}>
+                      <CardContent sx={{ p: 3 }}>
+                        <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, display: 'flex', alignItems: 'center' }}>
+                          💭 あなたの相談内容
+                        </Typography>
+                        <Typography variant="body1" sx={{ lineHeight: 1.7, mb: 2 }}>
+                          {consultation}
+                        </Typography>
+                        {selectedTags.length > 0 && (
+                          <Box>
+                            <Typography variant="caption" color="text.secondary" gutterBottom>
+                              選択されたタグ:
+                            </Typography>
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                              {selectedTags.map((tag) => (
+                                <Chip
+                                  key={tag}
+                                  label={tag}
+                                  size="small"
+                                  color="secondary"
+                                  variant="filled"
+                                />
+                              ))}
+                            </Box>
+                          </Box>
+                        )}
+                      </CardContent>
+                    </Card>
+
+                    {/* AIアドバイスの振り返り */}
+                    <Card sx={{ mb: 3, bgcolor: 'primary.light', border: '1px solid', borderColor: 'primary.main' }}>
+                      <CardContent sx={{ p: 3 }}>
+                        <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, display: 'flex', alignItems: 'center' }}>
+                          🤖 AIからのアドバイス
+                        </Typography>
+                        {aiSuggestions.map((suggestion, index) => (
+                          <Box key={index} sx={{ mb: index < aiSuggestions.length - 1 ? 2 : 0 }}>
+                            <Box display="flex" alignItems="center" mb={1}>
+                              {suggestion.type === 'perspective' && <Psychology color="secondary" sx={{ mr: 1, fontSize: 20 }} />}
+                              {suggestion.type === 'reframing' && <TipsAndUpdates color="secondary" sx={{ mr: 1, fontSize: 20 }} />}
+                              {suggestion.type === 'action' && <Lightbulb color="secondary" sx={{ mr: 1, fontSize: 20 }} />}
+                              <Typography variant="subtitle1" fontWeight={600}>
+                                {suggestion.title}
+                              </Typography>
+                            </Box>
+                            <Typography variant="body2" sx={{ lineHeight: 1.6, color: 'text.secondary' }}>
+                              {suggestion.content}
+                            </Typography>
+                            {index < aiSuggestions.length - 1 && <Divider sx={{ mt: 2 }} />}
+                          </Box>
+                        ))}
+                      </CardContent>
+                    </Card>
                     
                     <TextField
                       fullWidth
@@ -450,7 +544,7 @@ const ConsultationPage: React.FC = () => {
                       value={userReframing}
                       onChange={(e) => setUserReframing(e.target.value)}
                       sx={{ mb: 3 }}
-                      helperText="AIの提案を参考にしながら、あなた自身の気持ちや考えを整理してみましょう"
+                      helperText="上記の相談内容とAIアドバイスを参考にしながら、あなた自身の気持ちや考えを整理してみましょう"
                     />
 
                     <Box sx={{ display: 'flex', gap: 2 }}>

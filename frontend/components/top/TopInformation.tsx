@@ -236,10 +236,10 @@ const MimamoriApp: React.FC = () => {
         {/* ヘッダー */}
         <Box textAlign="center" mb={4}>
           <Typography variant="h4" gutterBottom>
-            見守り 💕
+            みかた 💕
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            もやもやした気持ちを一緒にリフレーミングしましょう
+            新しいみかたで、心を軽やかに
           </Typography>
         </Box>
 
@@ -382,7 +382,7 @@ const MimamoriApp: React.FC = () => {
         {/* 開発メモ */}
         <Paper sx={{ mt: 8, p: 4, bgcolor: '#f8f9fa', border: '1px solid #e9ecef' }}>
           <Typography variant="h6" gutterBottom sx={{ color: '#495057', fontWeight: 600 }}>
-            📝 開発メモ：リフレーミング支援アプリ「見守り」(仮称)
+            📝 開発メモ：リフレーミング支援アプリ「みかた」
           </Typography>
           
           <Box sx={{ mb: 3 }}>
@@ -390,12 +390,10 @@ const MimamoriApp: React.FC = () => {
               💡 アプリのコンセプト
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 2 }}>
-              もやもやした気持ちをAIと一緒にリフレーミング（考え方を変える）して、心を軽くするためのアプリ。
-              就労移行支援で学んだリフレーミングの手法をAIプロンプトに組み込み、実用的なアドバイスを提供する。
-            </Typography>
-            <Typography variant="body2" fontWeight="bold" sx={{ color: '#155724', fontStyle: 'italic' }}>
-            (プロンプトはnoteの投稿記事参照)
-            </Typography>
+  もやもやした気持ちを新しい「みかた」で整理して、心を軽くするアプリ。
+  AIがあなたの「みかた」となって、リフレーミングのお手伝いをします。<br/>
+  アプリ開発者が就労移行支援で学んだ専門的な手法で、実用的なアドバイスを提供します。
+</Typography>
           </Box>
 
           <Box sx={{ mb: 3 }}>
@@ -403,7 +401,7 @@ const MimamoriApp: React.FC = () => {
               🎨 デザイン
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 1 }}>
-              • <strong>カラー:</strong> ピンクと淡いベージュをベースとした優しい配色。アクセントカラーに紺色を採用(text.secondaryの色)
+              • <strong>カラー:</strong> ピンクと淡いベージュをベースとした優しい配色
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 2 }}>
               • <strong>コンセプト:</strong> 安心感と温かみを重視したUI
@@ -424,7 +422,7 @@ const MimamoriApp: React.FC = () => {
               • <strong>AI提案:</strong> 就労移行支援の知見を活かしたプロンプトで、AIが複数のリフレーミング案を提案
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 2 }}>
-              • <strong>ユーザーのリフレーミング:</strong> ユーザー自身が考えたリフレーミング後の考えも追加投稿可能
+              • <strong>ユーザーのリフレーミング:</strong> ユーザー自身が考えたリフレーミングも追加投稿可能
             </Typography>
           </Box>
 
@@ -439,7 +437,7 @@ const MimamoriApp: React.FC = () => {
               • <strong>ユーザー投稿の分析:</strong> ユーザーがリフレーミングを投稿した際、どのポイントを使っているかをAIが分析
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 2 }}>
-              • <strong>承認とフィードバック:</strong> 時間的視点を変えて考えられているか、感情と事実・感情と認知を分けて整理できているかなど、具体的なポイントを挙げて褒める
+              • <strong>承認とフィードバック:</strong> 「時間的視点を変えて考えられていますね」「感情と事実を分けて整理できています」など、具体的なポイントを挙げて褒める
             </Typography>
           </Box>
 
@@ -475,7 +473,7 @@ const MimamoriApp: React.FC = () => {
               ⭐ 評価・保存システム
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 1 }}>
-              • <strong>「見守った数」のみ表示:</strong> 閲覧数を「見守られた数」として表示する
+              • <strong>「見守った数」のみ表示:</strong> 投稿を見た人が「見守った」ボタンを押した数のみ表示
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 1 }}>
               • <strong>ブックマーク機能:</strong> ユーザーが後で見返したい投稿を保存可能
@@ -512,18 +510,6 @@ const MimamoriApp: React.FC = () => {
             </Typography>
             <Typography variant="body2" sx={{ color: '#495057', mb: 2 }}>
               7. <strong>シンプルな操作:</strong> 機能を絞ることで、悩んでいる時でも使いやすい設計
-            </Typography>
-          </Box>
-
-          <Box sx={{ p: 2, bgcolor: '#e8f5e8', borderRadius: 2, border: '1px solid #c3e6cb' }}>
-            <Typography variant="body2" sx={{ color: '#155724', fontStyle: 'italic' }}>
-            メインカラー: 淡いベージュ
-            </Typography>
-            <Typography variant="body2" sx={{ color: '#155724', fontStyle: 'italic' }}>
-            ベースカラー: ピンク
-            </Typography>
-            <Typography variant="body2" sx={{ color: '#155724', fontStyle: 'italic' }}>
-            アクセントカラー: 紺色っぽい色(text.secondaryのようなテキストカラー)
             </Typography>
           </Box>
 
@@ -644,50 +630,3 @@ const MimamoriApp: React.FC = () => {
 };
 
 export default MimamoriApp;
-
-/*
-=== 本格的なアプリ開発について ===
-
-このコードは「見守り」アプリのプロトタイプ・概念実証として作成されています。
-本格的なアプリケーションを開発する際は、以下の手順を推奨します：
-
-🚀 新規プロジェクト作成
-- このリポジトリではなく、新しくリポジトリを作成してください
-- このプロジェクトを参考資料として活用し、1から設計・実装を行ってください
-
-📋 本格開発時の検討事項：
-
-【技術スタック】
-- Next.js 14+ (App Router)
-- TypeScript
-- Prisma + PostgreSQL/MySQL（データベース）
-- NextAuth.js（認証）
-- Vercel/Railway（デプロイ）
-
-【追加実装が必要な機能】
-- ユーザー認証・登録システム
-- データベース設計・実装
-- セキュリティ対策（入力値検証、XSS対策など）
-- AI API連携（OpenAI GPT-4、Claude API等）
-- プッシュ通知機能
-- モバイルアプリ対応（React Native/Flutter）
-- 管理者機能
-- バックアップ・復元機能
-
-【設計面】
-- より詳細なユーザー体験設計
-- アクセシビリティ対応
-- 多言語対応
-- パフォーマンス最適化
-- エラーハンドリング
-- ログ機能
-
-【法的・倫理的配慮】
-- プライバシーポリシー
-- 利用規約
-- メンタルヘルス関連の注意事項
-- 専門家との連携体制
-
-このプロトタイプを基盤として、より堅牢で実用的なアプリケーションを
-新しいリポジトリで開発することを強く推奨します。
-*/
