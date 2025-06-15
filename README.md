@@ -1,357 +1,208 @@
-# BLOG MERN APP
+# リフレーミング支援アプリ「見守り」
 
-ブログ投稿と認証機能を持つMERNスタック（MongoDB, Express, React, Node.js）で構築されたウェブアプリケーションです。
+> もやもやした気持ちをAIと一緒にリフレーミング（考え方を変える）して、心を軽くするためのアプリ
+TODO: イメージスクショ貼る
 
-## 機能
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react&logoColor=black) ![Next.js](https://img.shields.io/badge/Next.js-15.2.0-000000?style=flat-square&logo=next.js&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-22.12.0-339933?style=flat-square&logo=node.js&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-8.11.0-47A248?style=flat-square&logo=mongodb&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007ACC?style=flat-square&logo=typescript&logoColor=white)
 
-1. ブログ投稿機能
-2. 認証機能
-   - Google認証を用いたログインが可能です（JWT認証適宜追加）
+## 🌸 アプリのコンセプト
 
-## デプロイ済みアプリケーション
+「見守り」は、単なるメンタルヘルスツールではなく、ユーザーの心の成長を大切に見守る温かいコミュニティを目指したアプリです。就労移行支援で学んだリフレーミングの手法をAIプロンプトに組み込み、実用的なアドバイスを提供します。<br>
+**(プロンプトはnoteの投稿記事参照!)**
 
-- [フロントエンド](https://blog-mern-app-front-web.onrender.com/posts)
-- [バックエンド API](https://blog-mern-app-1lw2.onrender.com/posts/)
+**デザインテーマ**: ピンクと淡いベージュをベースとした、安心感と温かみを重視したUI
 
-## 技術スタック
+## ✨ 主な機能
 
-このプロジェクトでは以下の技術を使用しています：
+### 📝 投稿機能
+- **リフレーミング前**: もやもやした気持ちを自由に入力
+- **AI提案**: 就労移行支援の知見を活かしたプロンプトで、AIが複数のリフレーミング案を提案
+- **ユーザーのリフレーミング**: ユーザー自身が考えたリフレーミングも、リフレーミング後の追加投稿可能
+
+### 🔒 編集ポリシー
+- **編集不可**: リフレーミング前の気持ち、AIの提案、ユーザーのリフレーミング後の考えは全て編集不可
+- **理由**: ありのままの気持ちと、その時頑張って考えた内容を大切にするため
+
+### 💬 コメント機能
+- **自分の投稿のみ**: 自分が投稿したものにだけコメント可能
+- **用途**: 時間が経って新しい気づきやリフレーミングが生まれた時に追加
+- **価値**: 思考の変化や成長過程を時系列で記録
+
+### 👁️ 評価・保存システム
+- **「見守った数」のみ表示**: 投稿の閲覧数を「見守られた数」として表示する
+- **ブックマーク機能**: 後で見返したい投稿を個人的に保存（数は非表示）
+- **理由**: 競争や比較を避け、共感と支え合いの文化を作るため
+
+## 🎯 特徴的な価値
+
+1. **素直な感情を大切にする**: 編集機能を制限することで、その瞬間の本当の気持ちを保護
+2. **成長過程の可視化**: コメント機能により、時間をかけた心の変化を記録
+3. **専門知識の活用**: 就労移行支援で学んだリフレーミング技法をAIに組み込み
+4. **温かいコミュニティ**: 「見守る」という表現で支え合いの文化を醸成
+5. **個人的な学習支援**: ブックマーク機能で参考になった投稿を個人的に保存可能
+6. **シンプルな操作**: 機能を絞ることで、悩んでいる時でも使いやすい設計
+
+## 🚀 デプロイ済みアプリケーション
+
+- **フロントエンド**: [https://blog-mern-app-front-web.onrender.com/posts](https://blog-mern-app-front-web.onrender.com/posts)
+- **バックエンドAPI**: [https://blog-mern-app-1lw2.onrender.com/posts/](https://blog-mern-app-1lw2.onrender.com/posts/)
+
+## 🛠️ 技術スタック
 
 ### フロントエンド
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-15.2.0-000000?style=flat-square&logo=next.js&logoColor=white)
-![Material UI](https://img.shields.io/badge/Material_UI-6.4.5-007FFF?style=flat-square&logo=mui&logoColor=white)
-![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2.5.1-764ABC?style=flat-square&logo=redux&logoColor=white)
-![React Redux](https://img.shields.io/badge/React_Redux-9.2.0-764ABC?style=flat-square&logo=redux&logoColor=white)
-![Axios](https://img.shields.io/badge/Axios-1.7.9-5A29E4?style=flat-square&logo=axios&logoColor=white)
-![React Hook Form](https://img.shields.io/badge/React_Hook_Form-7.54.2-EC5990?style=flat-square&logo=reacthookform&logoColor=white)
-![SWR](https://img.shields.io/badge/SWR-2.3.2-000000?style=flat-square&logo=vercel&logoColor=white)
-![Zod](https://img.shields.io/badge/Zod-3.24.2-3068B7?style=flat-square&logo=zod&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-007ACC?style=flat-square&logo=typescript&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-9.20.1-4B32C3?style=flat-square&logo=eslint&logoColor=white)
+- **React** 18.2.0 - UIライブラリ
+- **Next.js** 15.2.0 - Reactフレームワーク
+- **TypeScript** 5.3.3 - 型安全性
+- **Material UI** 6.4.5 - UIコンポーネントライブラリ
+- **Redux Toolkit** 2.5.1 - 状態管理
+- **React Hook Form** 7.54.2 - フォーム管理
+- **SWR** 2.3.2 - データフェッチング
+- **Zod** 3.24.2 - バリデーション
 
 ### バックエンド
-![Node.js](https://img.shields.io/badge/Node.js-22.12.0-339933?style=flat-square&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-4.x-000000?style=flat-square&logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-8.11.0-47A248?style=flat-square&logo=mongodb&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007ACC?style=flat-square&logo=typescript&logoColor=white)
+- **Node.js** 22.12.0 - サーバーサイドランタイム
+- **Express** 4.x - Webアプリケーションフレームワーク
+- **MongoDB** 8.11.0 - NoSQLデータベース
+- **TypeScript** 5.x - 型安全性
 
 ### インフラ・ツール
-![Docker](https://img.shields.io/badge/Docker-20.10-2496ED?style=flat-square&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2025-2088FF?style=flat-square&logo=github-actions&logoColor=white)
-![Render](https://img.shields.io/badge/Render-Deployed-46E3B7?style=flat-square&logo=render&logoColor=white)
+- **Docker** 20.10 - コンテナ化
+- **GitHub Actions** - CI/CD
+- **Render** - デプロイメントプラットフォーム
 
-## 目次
-- [概要](#概要)
-- [ディレクトリ構成](#ディレクトリ構成)
-- [セットアップ方法](#セットアップ方法)
-- [使用方法](#使用方法)
-- [環境変数の一覧](#環境変数の一覧)
-- [トラブルシューティング](#トラブルシューティング)
+## 📁 プロジェクト構成
 
-## 概要
-
-このプロジェクトは、MERNスタック（MongoDB, Express, React, Node.js）を使用して作成したブログアプリケーションです。ユーザーは投稿の閲覧、作成、編集、削除などの機能を利用できます。
-
-## ディレクトリ構成
-
-このプロジェクトのディレクトリ構成は次のようになっています：
-
-```plaintext
-/BLOG-MERN-APP                # プロジェクトのルートディレクトリ
-├── /frontend                 # フロントエンド（Next.js）
-│   ├── /app                  # Next.jsのappディレクトリ（App Router）
-│   │   ├── layout.tsx        # レイアウトコンポーネント
-│   │   ├── page.tsx          # ルートページ
-│   │   ├── error.tsx         # エラーページ
-│   │   ├── loading.tsx       # ローディングページ
-│   │   ├── forbidden.tsx     # アクセス制限ページ
-│   │   ├── /auth             # 認証関連のルート
-│   │   │   ├── /login        # ログイン
-│   │   │   │   └── page.tsx
-│   │   │   ├── /register     # ユーザー登録
-│   │   │   │   └── page.tsx
-│   │   │   ├── /forgot-password  # パスワードリセット要求
-│   │   │   │   └── page.tsx
-│   │   │   ├── /new-password     # 新パスワード設定
-│   │   │   │   └── page.tsx
-│   │   │   └── /confirm-account  # アカウント確認
-│   │   │       └── page.tsx
-│   │   └── /posts            # 投稿関連のルート
-│   │       ├── page.tsx      # 投稿一覧ページ
-│   │       ├── loading.tsx   # 投稿ルート専用ローディング
-│   │       └── /[id]         # 投稿詳細ページ
-│   ├── /components           # 再利用可能なコンポーネント
-│   │   ├── /ui               # 基本的なUI要素
-│   │   │   ├── /Button
-│   │   │   │   ├── Button.tsx
-│   │   │   │   └── Button.test.tsx
-│   │   │   ├── /Input
-│   │   │   │   ├── Input.tsx
-│   │   │   │   └── Input.test.tsx
-│   │   │   └── /Card
-│   │   │       ├── Card.tsx
-│   │   │       └── Card.test.tsx
-│   │   ├── /feedback         # フィードバック関連
-│   │   │   ├── /Loading
-│   │   │   │   ├── Loading.tsx
-│   │   │   │   └── Loading.test.tsx
-│   │   │   └── /Alert
-│   │   │       ├── Alert.tsx
-│   │   │       └── Alert.test.tsx
-│   │   │   └── /ErrorMessage
-│   │   │       ├── ErrorMessage.tsx
-│   │   │       └── ErrorMessage.test.tsx
-│   │   │   └── /SuccessMessage
-│   │   │       ├── SuccessMessage.tsx
-│   │   │       └── SuccessMessage.test.tsx
-│   │   ├── /layouts          # レイアウト関連
-│   │   │   ├── /Header
-│   │   │   │   ├── Header.tsx
-│   │   │   │   └── Header.test.tsx
-│   │   │   └── /Footer
-│   │   │       ├── Footer.tsx
-│   │   │       └── Footer.test.tsx
-│   │   ├── /forms            # フォーム関連
-│   │   │   ├── /TextField
-│   │   │   │   ├── TextField.tsx
-│   │   │   │   └── TextField.test.tsx
-│   │   │   └── /Select
-│   │   │       ├── Select.tsx
-│   │   │       └── Select.test.tsx
-│   │   ├── /navigation       # ナビゲーション関連
-│   │   │   ├── /Breadcrumbs
-│   │   │   │   ├── Breadcrumbs.tsx
-│   │   │   │   └── Breadcrumbs.test.tsx
-│   │   │   └── /Pagination
-│   │   │       ├── Pagination.tsx
-│   │   │       └── Pagination.test.tsx
-│   │   └── /data-display     # データ表示関連
-│   │       ├── /Table
-│   │       │   ├── Table.tsx
-│   │       │   └── Table.test.tsx
-│   │       └── /List
-│   │           ├── List.tsx
-│   │           └── List.test.tsx
-│   ├── /features             # 機能ごとのモジュール
-│   │   ├── /auth             # 認証機能
-│   │   │   ├── /api          # 認証関連のAPI呼び出し
-│   │   │   │   ├── login.ts
-│   │   │   │   ├── register.ts
-│   │   │   │   ├── resetPassword.ts
-│   │   │   │   └── confirmAccount.ts
-│   │   │   ├── /components   # 認証関連のコンポーネント
-│   │   │   │   ├── LoginForm.tsx
-│   │   │   │   ├── RegisterForm.tsx
-│   │   │   │   ├── ForgotPasswordForm.tsx
-│   │   │   │   └── NewPasswordForm.tsx
-│   │   │   ├── /hooks        # 認証関連のカスタムフック
-│   │   │   │   ├── useAuth.ts
-│   │   │   │   └── useAuth.test.ts
-│   │   │   └── /types        # 認証機能特有の型定義
-│   │   │       └── index.ts
-│   │   └── /post             # 投稿機能
-│   │       ├── /api          # 投稿関連のAPI呼び出し
-│   │       │   ├── getPost.ts
-│   │       │   └── getPost.test.ts
-│   │       ├── /components   # 投稿関連のコンポーネント
-│   │       │   ├── Post.tsx
-│   │       │   └── Posts.tsx
-│   │       ├── /hooks        # 投稿関連のカスタムフック
-│   │       │   ├── usePost.ts
-│   │       │   └── usePost.test.ts
-│   │       └── /types        # 投稿機能特有の型定義
-│   │           └── index.ts
-│   ├── /hooks                # 共通カスタムフック
-│   │   ├── useCustomHook.ts
-│   │   └── useCustomHook.test.ts
-│   ├── /styles               # スタイル関連
-│   ├── /types                # アプリケーション全体の型定義
-│   │   ├── index.ts          # すべての型をエクスポートするバレルファイル
-│   │   ├── board.ts          # 掲示板関連の型
-│   │   ├── post.ts           # 投稿関連の共通型
-│   │   ├── comment.ts        # コメント関連の型
-│   │   ├── user.ts           # ユーザー関連の型
-│   │   ├── notification.ts   # 通知関連の型
-│   │   ├── api.ts            # API関連の型定義
-│   │   └── ui.ts             # UI関連の共通型
-│   └── /utils                # ヘルパー関数やユーティリティ
-│       ├── helper.ts
-│       └── helper.test.ts
-├── /backend                  # バックエンド（Node.js + Express）
-│   ├── /src                  # ソースコード
-│   │   ├── /config           # 設定ファイル
-│   │   ├── /controllers      # コントローラー
-│   │   │   ├── /auth         # 認証関連コントローラー
-│   │   │   │   ├── login.ts
-│   │   │   │   ├── register.ts
-│   │   │   │   ├── resetPassword.ts
-│   │   │   │   └── confirmAccount.ts
-│   │   │   └── /posts        # 投稿関連コントローラー
-│   │   ├── /middleware       # ミドルウェア
-│   │   │   ├── auth.ts       # 認証ミドルウェア
-│   │   │   └── error.ts      # エラーハンドリングミドルウェア
-│   │   ├── /models           # データモデル
-│   │   │   ├── User.ts
-│   │   │   └── Post.ts
-│   │   ├── /routes           # APIルート
-│   │   │   ├── /auth.ts      # 認証関連ルート
-│   │   │   └── /posts.ts     # 投稿関連ルート
-│   │   ├── /types            # バックエンド用の型定義
-│   │   ├── /utils            # ユーティリティ関数
-│   │   ├── /server.ts        # サーバー設定
-│   │   └── /index.ts         # エントリーポイント
-│   └── /dist                 # コンパイル後のファイル
-├── /docker                   # Docker関連ファイル
-│   ├── /frontend             # フロントエンド用Docker設定
-│   │   └── Dockerfile
-│   └── /backend              # バックエンド用Docker設定
-│       └── Dockerfile
-├── /.github                  # GitHub関連の設定ファイル
-│   └── /workflows            # GitHub Actionsのワークフロー設定
-│       ├── /lint.yml         # リント用の設定
-│       └── /cd.yml           # 継続的デリバリー用の設定
-├── /docker-compose.yml       # Docker Compose設定ファイル
-├── /.gitignore               # Git除外ファイル設定
-├── /README.md                # プロジェクト説明
-└── /package.json             # ルートパッケージ設定（モノレポ用）
+```
+/BLOG-MERN-APP
+├── /frontend                 # Next.jsフロントエンド
+│   ├── /app                  # App Routerディレクトリ
+│   │   ├── /auth            # 認証関連ページ
+│   │   └── /posts           # 投稿関連ページ
+│   ├── /components          # 再利用可能コンポーネント
+│   │   ├── /ui              # 基本UI要素
+│   │   ├── /layouts         # レイアウト関連
+│   │   └── /forms           # フォーム関連
+│   ├── /features            # 機能別モジュール
+│   │   ├── /auth            # 認証機能
+│   │   └── /post            # 投稿機能
+│   └── /types               # 型定義
+├── /backend                 # Express.jsバックエンド
+│   ├── /src
+│   │   ├── /controllers     # コントローラー
+│   │   ├── /models          # データモデル
+│   │   ├── /routes          # APIルート
+│   │   └── /middleware      # ミドルウェア
+└── /docker                  # Docker設定
 ```
 
-## セットアップ方法
+## 🚀 セットアップ方法
 
-### 1. 必要なもの
+### 必要な環境
+- Node.js 16以上
+- Docker & Docker Compose
+- MongoDB（またはMongoDB Atlas）
 
-- Node.js（バージョン16以上推奨）
-- Docker（Docker Composeも含む）
-- MongoDB（Docker Composeで管理、またはMongoDBアトラス）
+### ローカル開発環境の構築
 
-### 2. ローカル環境の構築
-
-1. リポジトリをクローンします。
-
+1. **リポジトリのクローン**
    ```bash
    git clone https://github.com/yoshihama-nineball/BLOG-MERN-APP.git
    cd BLOG-MERN-APP
    ```
 
-2. フロントエンドのセットアップ
-
+2. **フロントエンドのセットアップ**
    ```bash
    cd frontend
    yarn install
-   # .env.localを作成して環境変数を設定
+   cp .env.local.example .env.local  # 環境変数ファイルの作成
    yarn dev
    ```
 
-3. バックエンドのセットアップ
-
+3. **バックエンドのセットアップ**
    ```bash
    cd backend
    yarn install
-   # .envを作成して環境変数を設定
+   cp .env.example .env  # 環境変数ファイルの作成
    yarn dev
    ```
 
-4. Docker Composeを使用する場合
-
+4. **Docker Composeを使用する場合**
    ```bash
    docker compose up --build
    ```
 
-   サーバーが起動し、MongoDBが接続されるのを確認します。
+## 🌐 アクセス情報
 
-## 使用方法
+- **フロントエンド**: http://localhost:3000
+- **バックエンドAPI**: http://localhost:5000
 
-- フロントエンドは `http://localhost:3000` でアクセスできます
-- バックエンドAPIは `http://localhost:5000` で実行されます
-
-### 開発用コマンド
-
-フロントエンド（Next.js）:
-
-```bash
-# 開発サーバーの起動
-yarn dev
-
-# ビルド
-yarn build
-
-# プロダクションサーバーの起動
-yarn start
-
-# テストの実行
-yarn test
-
-# コードフォーマット
-yarn format
-
-# リントチェック
-yarn lint
-```
-
-バックエンド:
-
-```bash
-# 開発サーバーの起動
-yarn dev
-
-# ビルド
-yarn build
-
-# プロダクションサーバーの起動
-yarn start
-
-# テストの実行
-yarn test
-
-# コードフォーマット
-yarn format
-```
-
-## 環境変数の一覧
+## ⚙️ 環境変数
 
 ### フロントエンド (.env.local)
-
-| 変数名 | 説明 | デフォルト値 | 
-|--------|------|-------------|
-| NEXT_PUBLIC_BASE_URL | バックエンドAPIのURL | http://localhost:5000/api/v1/posts |
-
-### バックエンド (.env)
-
-| 変数名 | 説明 | デフォルト値 |
-|--------|------|-------------|
-| PORT | サーバーのポート番号 | 5000 |
-| MONGODB_URI | MongoDBの接続文字列 | mongodb://localhost:27017/blog-app |
-| JWT_SECRET | JWT認証用の秘密鍵 | your_secret_key |
-| NODE_ENV | 実行環境 | development |
-
-## トラブルシューティング
-
-### MongoDB接続エラー
-
-MongoDB Atlasを使用している場合は、IPアドレスがアクセス許可リストに追加されているか確認してください。
-Renderなどのクラウドサービスから接続する場合は、`0.0.0.0/0`を許可リストに追加することで、どのIPアドレスからもアクセスできるようになります。
-
-### Ports are not available: address already in use
-
-別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります。
-以下のコマンドで使用中のポートを確認し、必要に応じて停止またはポート番号を変更してください：
-
-```bash
-# Linuxの場合
-sudo lsof -i :5000
-sudo lsof -i :3000
-
-# Windowsの場合
-netstat -ano | findstr :5000
-netstat -ano | findstr :3000
+```env
+NEXT_PUBLIC_BASE_URL=http://localhost:5000/api/v1/posts
 ```
 
-### Docker関連のエラー
+### バックエンド (.env)
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/blog-app
+JWT_SECRET=your_secret_key
+NODE_ENV=development
+```
 
-- **.env: no such file or directory**: 環境変数ファイルを作成してください
-- **docker daemon is not running**: Docker Desktopが起動していることを確認してください
+## 💻 開発用コマンド
 
-## ライセンス
+### フロントエンド
+```bash
+yarn dev     # 開発サーバー起動
+yarn build   # プロダクションビルド
+yarn start   # プロダクションサーバー起動
+yarn test    # テスト実行
+yarn lint    # リント実行
+```
 
-MITライセンスで公開しています。詳細についてはLICENSEファイルをご覧ください。
+### バックエンド
+```bash
+yarn dev     # 開発サーバー起動
+yarn build   # TypeScriptコンパイル
+yarn start   # プロダクションサーバー起動
+yarn test    # テスト実行
+```
+
+## 🔧 トラブルシューティング
+
+### MongoDB接続エラー
+- MongoDB Atlasを使用する場合、IPアドレスがアクセス許可リストに追加されているか確認
+- クラウドサービスからは `0.0.0.0/0` を許可リストに追加
+
+### ポート使用中エラー
+```bash
+# ポート使用状況確認
+sudo lsof -i :5000  # Linux/Mac
+netstat -ano | findstr :5000  # Windows
+```
+
+### Docker関連エラー
+- 環境変数ファイル（.env）が作成されているか確認
+- Docker Desktopが起動していることを確認
+
+## 📝 今後の開発予定
+
+- [ ] AI提案機能の実装
+- [ ] リアルタイム通知機能
+- [ ] モバイルアプリ版の開発
+- [ ] 多言語対応
+- [ ] アクセシビリティの向上
+
+## 📄 ライセンス
+
+MIT License - 詳細は [LICENSE](LICENSE) ファイルをご覧ください。
+
+## 🤝 コントリビューション
+
+プルリクエストやイシューの投稿を歓迎します。開発に参加される場合は、まずイシューで議論してからプルリクエストを作成してください。
+
+---
+
+**「見守り」** - あなたの心の成長を、温かく見守ります 💖
