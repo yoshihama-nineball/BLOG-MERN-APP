@@ -150,7 +150,7 @@ const Header = () => {
             <Button
               component={Link}
               href="/posts/create"
-              color="primary"
+              color="secondary"
               variant="contained"
               startIcon={<AddIcon />}
             >
