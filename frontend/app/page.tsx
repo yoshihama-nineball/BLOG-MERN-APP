@@ -1,5 +1,7 @@
+import TopInformation from "@/components/top/TopInformation"
+
 const page = () => {
-  return <div>トップページ!!!★</div>
+  return <><TopInformation /></>
 }
 
 export default page
