@@ -7,10 +7,10 @@ import Footer from '../components/layouts/Footer/Footer'
 import Header from '../components/layouts/Header/Header'
 
 export const metadata: Metadata = {
-  title: 'BLOG MERN APP | TOP',
-  description: 'TOPページです',
+  title: 'リフレーミングアプリ | TOP',
+  description: 'リフレーミングアプリのTOPページです',
   icons: {
-    icon: '/icon.png',
+    icon: '/growth.png',
   },
 }
 
