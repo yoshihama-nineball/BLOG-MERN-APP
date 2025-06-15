@@ -7,12 +7,12 @@ import {
   Bookmark,
   BookmarkBorder,
   Comment,
-  FavoriteBorder,
   Home,
   Search,
   Send,
   Sort,
-  TrendingUp
+  TrendingUp,
+  VolunteerActivism
 } from '@mui/icons-material';
 import {
   Alert,
@@ -584,7 +584,7 @@ const PostsPage: React.FC = () => {
                       <Box display="flex" gap={1}>
                         <Button
                           size="small"
-                          startIcon={<FavoriteBorder />}
+                          startIcon={<VolunteerActivism />}
                           onClick={() => handleWatch(post.id)}
                           sx={{ color: 'secondary.main' }}
                         >

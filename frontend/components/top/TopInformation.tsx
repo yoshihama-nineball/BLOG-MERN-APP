@@ -6,8 +6,8 @@ import {
   Bookmark,
   BookmarkBorder,
   Comment,
-  Send,
-  Visibility
+  Handshake,
+  Send
 } from '@mui/icons-material';
 import {
   Alert,
@@ -311,7 +311,7 @@ const MimamoriApp: React.FC = () => {
                       <Box display="flex" gap={1}>
                         <Button
                           size="small"
-                          startIcon={<Visibility />}
+                          startIcon={<Handshake />}
                           onClick={() => handleWatch(post.id)}
                           sx={{ color: 'primary.main' }}
                         >

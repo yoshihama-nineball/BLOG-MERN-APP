@@ -5,7 +5,7 @@ import PostsImage from '@/components/posts/PostsImage'
 import {
   Delete as DeleteIcon,
   Edit as EditIcon,
-  Visibility as VisibilityIcon,
+  Handshake as HandshakeIcon,
 } from '@mui/icons-material'
 import { Box, CircularProgress, Paper, Stack, Typography } from '@mui/material'
 import { useSearchParams } from 'next/navigation'
@@ -104,7 +104,7 @@ const PostsList: React.FC = () => {
             <Stack direction="row" spacing={2} sx={{ marginTop: 2 }}>
               <Button
                 variant="primary"
-                startIcon={<VisibilityIcon />}
+                startIcon={<HandshakeIcon />}
                 href={`/posts/${post._id}`}
               >
                 詳細

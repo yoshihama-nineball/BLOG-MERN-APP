@@ -7,9 +7,9 @@ import {
   BookmarkBorder,
   Comment,
   Edit,
-  FavoriteBorder,
   Home,
   Send,
+  VolunteerActivism,
 } from '@mui/icons-material';
 import {
   Alert,
@@ -514,7 +514,7 @@ const PostDetailPage: React.FC<PostDetailPageProps> = ({ postId }) => {
               <Box display="flex" gap={2}>
                 <Button
                   variant="outlined"
-                  startIcon={<FavoriteBorder />}
+                  startIcon={<VolunteerActivism />}
                   onClick={handleWatch}
                   sx={{ color: 'secondary.main', borderColor: 'secondary.main' }}
                 >
