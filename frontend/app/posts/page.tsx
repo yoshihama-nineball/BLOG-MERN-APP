@@ -1,6 +1,7 @@
 'use client'
 
 import Alert from '@/components/feedback/Alert/Alert'
+import PostsImage from '@/components/posts/PostsImage'
 import {
   Delete as DeleteIcon,
   Edit as EditIcon,
@@ -137,6 +138,7 @@ const PostsList: React.FC = () => {
         onConfirm={deleteHandler}
         onCancel={handleClose}
       />
+      <PostsImage />
     </Box>
   )
 }
